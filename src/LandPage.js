@@ -6,7 +6,6 @@ import PremiumPage from './Components/PremiumPage'
 import Blog from './Components/Blog'
 import LoginPage from './Components/LoginPage'
 import Header from './Components/Header'
-import Footer from './Components/Footer';
 import './LandPage.css'
 
 const LandPage = (props) => {
@@ -39,7 +38,6 @@ const LandPage = (props) => {
             <PremiumPage />
           )
         } />   
-        <Footer />        
       </Router>
     </div>
   )

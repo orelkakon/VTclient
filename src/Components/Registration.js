@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { LogoImg2, LoginForm, InputField, LoginButton } from './Index'
+import Footer from './../Components/Footer';
 
 const Registration = () => {
     const [username, setUsername] = useState("")
@@ -18,6 +19,7 @@ const Registration = () => {
                 <InputField placeholder="Email" autocomplete="off" id="email" name="email" onChange={e => setEmail(e.target.value)}/><br/> <br/>
                 <LoginButton onClick={() => alert("orel kakon")}>Sign Up</LoginButton>
             </LoginForm>
+            <Footer />        
         </div>
     )
 }

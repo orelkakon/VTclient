@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { LogoImg, LoginForm, InputField, LoginButton } from './Index'
+import Footer from './../Components/Footer';
 
 const LoginPage = () => {
     const [username, setUsername] = useState("")
@@ -12,6 +13,7 @@ const LoginPage = () => {
                 <InputField placeholder="Password" autocomplete="off" id="password" name="password" onChange={e => setPassword(e.target.value)}/><br/> <br/>
                 <LoginButton onClick={() => alert("orel kakon")}>Sign In</LoginButton>
             </LoginForm>
+            <Footer />        
         </div>
     )
 }

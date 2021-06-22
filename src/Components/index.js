@@ -107,3 +107,15 @@ export const LoginButton = styled.button`
         background: #0e0e10;
     };
 `;
+
+// About
+export const About = styled.text`
+`;
+
+export const AboutContact = styled.div`
+    text-align: center;
+    font-size: 25px;
+    color: #bfbfbf;
+    padding: 6px;
+    font-family: Comic Sans MS;
+`;
