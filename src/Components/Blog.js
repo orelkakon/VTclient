@@ -1,8 +1,8 @@
-function Body() {
+function Blog() {
     return (
         <div>
         </div>
     )
 }
 
-export default Body;
+export default Blog;

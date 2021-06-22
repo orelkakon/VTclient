@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import LandPage from './LandPage';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <LandPage />
   </React.StrictMode>,
   document.getElementById('root')
 );
