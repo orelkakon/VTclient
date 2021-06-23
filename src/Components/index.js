@@ -119,3 +119,58 @@ export const AboutContact = styled.div`
     padding: 6px;
     font-family: Comic Sans MS;
 `;
+
+// Post
+export const PostDiv = styled.div`
+    text-align: center;
+    border: solid 2px black;
+    width: 90%;
+    margin: auto;
+    justify-content: center;
+`;
+
+export const PostUser = styled.text`
+    display: flex;
+    font-size: 26px;
+    float: left;
+    margin: 10px 0px 0px 10px;
+`;
+
+export const PostDate = styled.text`
+    display: flex;
+    font-size: 26px;
+    float: right;
+    margin: 10px 10px 0px 0px;
+`;
+
+export const PostTitle = styled.text`
+    display: flex;
+    font-size: 25px;
+    justify-content: center;
+    text-decoration: underline;
+    width: 100%;
+`;
+
+export const PostContent = styled.text`
+    display: flex;
+    font-size: 22px;
+    justify-content: center;  
+`;
+
+export const PostImg = styled.div`
+    display: flex; 
+    background-image: url(${props => props.image});
+    background-repeat: no-repeat;
+    height: 300px;
+    width: 300px;
+    margin: auto;
+
+    @media all and (min-width: 1024px)
+    {
+        &:hover
+        {
+            transform: scale(3)
+        }
+    }
+
+`;

@@ -6,12 +6,13 @@ import PremiumPage from './Components/PremiumPage'
 import Blog from './Components/Blog'
 import LoginPage from './Components/LoginPage'
 import Header from './Components/Header'
+import history from './Components/History';
 import './LandPage.css'
 
 const LandPage = (props) => {
   return (
     <div className="landpage">
-      <Router>
+      <Router history={history}>
         <Header />
         <Route path="/" exact strict render={
           () => (
@@ -28,7 +29,7 @@ const LandPage = (props) => {
             <AboutAndContact />
           )
         } />
-        <Route path="Blog" exact strict render={
+        <Route path="/Blog" exact strict render={
           () => (
             <Blog />
           )
