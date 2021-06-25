@@ -53,7 +53,7 @@ export const LogoImg = styled.div`
 export const LogoImg2 = styled.div`
     background-image: url(${joinUs});
     background-repeat: no-repeat;
-    height: 130px;
+    height: 138px;
     width: 130px;
     margin: auto;
     zoom: 110%
@@ -124,28 +124,39 @@ export const AboutContact = styled.div`
 export const PostDiv = styled.div`
     text-align: center;
     border: solid 2px black;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 8px 10px black;
     width: 90%;
     margin: auto;
     justify-content: center;
+    background-color: #e6e6ff;
 `;
 
 export const PostUser = styled.text`
     display: flex;
-    font-size: 26px;
+    font-size: 25px;
     float: left;
     margin: 10px 0px 0px 10px;
+    @media all and (min-width: 1024px)
+    {
+        font-size: 35px;     
+    }
 `;
 
 export const PostDate = styled.text`
     display: flex;
-    font-size: 26px;
+    font-size: 25px;
     float: right;
     margin: 10px 10px 0px 0px;
+    @media all and (min-width: 1024px)
+    {
+        font-size: 35px;     
+    }
 `;
 
 export const PostTitle = styled.text`
     display: flex;
-    font-size: 25px;
+    font-size: 28px;
     justify-content: center;
     text-decoration: underline;
     width: 100%;
@@ -153,7 +164,7 @@ export const PostTitle = styled.text`
 
 export const PostContent = styled.text`
     display: flex;
-    font-size: 22px;
+    font-size: 25px;
     justify-content: center;  
 `;
 
@@ -164,12 +175,105 @@ export const PostImg = styled.div`
     height: 300px;
     width: 300px;
     margin: auto;
-
     @media all and (min-width: 1024px)
     {
         &:hover
         {
             transform: scale(3)
+        }
+    }
+
+`;
+
+export const CommentsArea = styled.div`
+    border: none 2px black;
+    border-radius: 10px 10px 10px 10px;
+    padding-bottom: 10px;
+    margin: 10px 10px 10px 10px; 
+    background-color: #b3b3ff;
+`;
+
+export const CommentsTitle = styled.text`
+    font-size: 35px;
+    text-shadow: 2px 2px black;
+`;
+
+//Comment
+
+export const CommentBorder = styled.div`
+    border: none 2px black;
+    border-radius: 20px 20px 20px 20px;
+    padding-bottom: 5px;
+    margin: 0px 25px 5px 25px;
+    background-color: #e6e6ff;
+`;  
+
+export const CommentDesc = styled.text`
+    font-size: 20px;
+`;
+
+export const NameAndDateComment = styled.text`
+    text-decoration: underline;
+    font-size: 18px;
+    float: left;
+    margin-left: 5px;
+    text-shadow: 1px 1px black;
+`;
+
+// AddComment
+
+export const AddCommentt = styled.div`
+
+`;
+
+export const InputAddComment = styled.textarea`
+    background-color: #e6e6ff;
+    width: 80%;
+    min-height: 15vh;
+    border-radius: 15px 15px 15px 15px;
+    border: none;
+    padding: 0px 5px 0px 5px;
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: black;
+        padding: 0px 5px 0px 5px;
+        font-family: Comic Sans MS;
+    };
+    @media all and (min-width: 1024px)
+    {
+        width: 95%;
+    }
+`;
+
+export const ButtonAddComment = styled.button`
+    position: relative;
+    width: 80px;
+    height: 36px;
+    border-radius: 18px;
+    background-color: #e6e6ff;
+    border: solid 1px transparent;
+    color: #000;
+    font-size: 18px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all .1s ease-in-out;
+    &:hover {
+        background-color: transparent;
+        border-color: #fff;
+        transition: all .1s ease-in-out;
+    }
+
+`;
+
+export const ImageComment = styled.img`
+    height: auto;
+    max-width:90%;
+    max-height:90%;
+    margin: auto;
+    @media all and (max-width: 1024px)
+    {
+        &:hover
+        {
+            transform: scale(2)
         }
     }
 

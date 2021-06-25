@@ -10,7 +10,7 @@ function Header() {
                     <HeaderListElement>
                         <NavLink to="/"  style ={{textDecoration: 'none', color: 'black'}} activeClassName="nl" exact activeStyle={
                         { textDecoration: 'underline' }
-                        }>Home</NavLink>
+                        }>Login</NavLink>
                     </HeaderListElement>
                     <HeaderListElement>
                         <NavLink to="/Registration"  style ={{textDecoration: 'none', color: 'black'}} activeClassName="nl" exact activeStyle={

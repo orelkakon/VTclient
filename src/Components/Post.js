@@ -1,4 +1,6 @@
-import { PostDiv, PostUser, PostTitle, PostImg, PostDate, PostContent } from './Index'
+import { PostDiv, PostUser, PostTitle, PostImg, PostDate, PostContent, CommentsArea, CommentsTitle } from './Index'
+import Comment from './Comment'
+import AddComment from './AddComment' 
 
 const Post = (props) => {
     return (
@@ -12,8 +14,21 @@ const Post = (props) => {
             {
                 props.files.map( Image => {
                     return (<PostImg image={Image}/>)
-                })
+                })  
             }
+            
+            <CommentsArea>
+                <CommentsTitle>Comments</CommentsTitle>
+                <br/><br/>
+                {   
+                    props.comments.map( comment => {
+                        return ( <Comment comment={comment}/> )
+                    })
+                }
+                <AddComment>
+                </AddComment>
+            </CommentsArea>
+            
         </PostDiv>
     )
 }
