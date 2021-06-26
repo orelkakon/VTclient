@@ -25,7 +25,7 @@ export const HeaderListElement = styled.li`
     display: flex;  
     padding: 14px;
     font-family: Comic Sans MS;
-    font-size: 3.1vw;
+    font-size: 2.8vw;
     font-weight: bold;
 `; 
 
@@ -223,16 +223,17 @@ export const NameAndDateComment = styled.text`
 // AddComment
 
 export const AddCommentt = styled.div`
-
+    position: relative;
 `;
 
 export const InputAddComment = styled.textarea`
     background-color: #e6e6ff;
-    width: 80%;
+    width: 82%;
     min-height: 15vh;
     border-radius: 15px 15px 15px 15px;
     border: none;
     padding: 0px 5px 0px 5px;
+    resize: none;
     ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
         color: black;
         padding: 0px 5px 0px 5px;
@@ -269,12 +270,65 @@ export const ImageComment = styled.img`
     max-width:90%;
     max-height:90%;
     margin: auto;
-    @media all and (max-width: 1024px)
+    &:hover
     {
-        &:hover
-        {
-            transform: scale(2)
-        }
+        transform: scale(1.5)
     }
+`;
 
+export const ButtonAddFile = styled.button`
+    position: absolute;
+    left: 80%;
+    top: 51%;
+    border-radius: 18px;
+    background-color: #b3b3ff;
+    border: solid 1px transparent;
+    color: #000;
+    cursor:pointer;
+    &:hover {
+        background-color: transparent;
+        border-color: #fff;
+        transition: all .1s ease-in-out;
+    }
+    @media all and (min-width: 1024px)
+    {
+        left: 94.5%;
+    }
+`;
+
+// Links
+export const LinksDiv = styled.div`
+    text-align: center;
+    justify-content: center;
+`;
+
+export const FolderButton = styled.button`
+    display: inline-flex;
+    align-items: center;
+    background: black;
+    box-shadow: 0 3px 2px 0 rgba(0,0,0,0.1);
+    border-radius: 5px;
+    height: 45px;
+    padding: 30px 30px;
+    width: 110px;
+    color: #fff;
+    font-family: Lato, Arial, sans-serif;
+    text-decoration: none;
+    transition: background .3s, transform .3s, box-shadow .3s;
+    will-change: transform;
+    
+    &:hover {
+        background: darken(#C06C84,10%);
+        box-shadow: 0 4px 17px rgba(0,0,0,0.2);
+        transform: translate3d(0, -2px, 0);
+    }
+    &:active {
+        box-shadow: 0 1px 1px 0 rgba(0,0,0,0.1);
+        transform: translate3d(0, 1px, 0);
+    }
+`;
+
+export const FilesDiv = styled.div`
+    justify-content: center;
+    padding: 40px;
 `;

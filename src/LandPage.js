@@ -7,9 +7,10 @@ import Blog from './Components/Blog'
 import LoginPage from './Components/LoginPage'
 import Header from './Components/Header'
 import history from './Components/History';
+import Links from './Components/Links'
 import './LandPage.css'
 
-const LandPage = (props) => {
+const LandPage = () => {
   return (
     <div className="landpage">
       <Router history={history}>
@@ -38,7 +39,12 @@ const LandPage = (props) => {
           () => (
             <PremiumPage />
           )
-        } />   
+        } />  
+        <Route path="/Links" exact strict render={
+          () => (
+            <Links />
+          )
+        } /> 
       </Router>
     </div>
   )

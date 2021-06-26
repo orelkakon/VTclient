@@ -61,6 +61,7 @@ const Blog = () => {
     return (
         <div>
             <br/>
+            <h1 style={{textAlign:'center'}}>Global Questions</h1>
             <br/>
             {
                 data.map(post => {

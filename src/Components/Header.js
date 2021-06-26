@@ -15,7 +15,7 @@ function Header() {
                     <HeaderListElement>
                         <NavLink to="/Registration"  style ={{textDecoration: 'none', color: 'black'}} activeClassName="nl" exact activeStyle={
                         { textDecoration: 'underline' }
-                        }>Registration</NavLink>
+                        }>Register</NavLink>
                     </HeaderListElement>
                     <HeaderListElement>
                         <NavLink to="/AboutAndContact"  style ={{textDecoration: 'none', color: 'black'}} activeClassName="nl" exact activeStyle={
@@ -31,6 +31,11 @@ function Header() {
                         <NavLink to="/Blog"  style ={{textDecoration: 'none', color: 'black'}} activeClassName="nl" exact activeStyle={
                         { textDecoration: 'underline' }
                         }>Explore</NavLink>
+                    </HeaderListElement>
+                    <HeaderListElement>
+                        <NavLink to="/Links"  style ={{textDecoration: 'none', color: 'black'}} activeClassName="nl" exact activeStyle={
+                        { textDecoration: 'underline' }
+                        }>Links</NavLink>
                     </HeaderListElement>
                 </HeaderList>
         </HeaderDiv>
