@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import {LinksDiv, FolderButton, FilesDiv} from './Index'
+import {LinksDiv, FolderButton, FilesDiv} from './index';
 import file from '../Assets/file.jpg';
+import link from '../Assets/link.png';
+import formulla from '../Assets/formula.png';
 
 const Links = () => {
     const [formula, setFormula] = useState(false)
@@ -30,25 +32,25 @@ const Links = () => {
                 formula ? 
                 <FilesDiv>
                 <a href="https://meyda.education.gov.il/files/Exams/3-MATH-Formula.pdf" target="_blank" style={{textDecoration: 'none', color: 'black', fontSize: '30px'}}>
-                    <img src = {file} alt = "3 units" style = {{width:"80px",height:"80px"}}/>
+                    <img src = {formulla} alt = "3 units" style = {{width:"80px",height:"80px"}}/>
                     <br/>
                     3 Units Math
                 </a>
                 <br/><br/><br/>
                 <a href="https://www.kidum.com/bagrut/public/uploads/ckfinder/files/%D7%A0%D7%95%D7%A1%D7%97%D7%90%D7%95%D7%9F%204%20%D7%99%D7%97'%20%D7%9E%D7%AA%D7%9E%D7%98%D7%99%D7%A7%D7%94.pdf" target="_blank" style={{textDecoration: 'none', color: 'black', fontSize: '30px'}}>
-                    <img src = {file} alt = "4 units" style = {{width:"80px",height:"80px"}}/>
+                    <img src = {formulla} alt = "4 units" style = {{width:"80px",height:"80px"}}/>
                     <br/>
                     4 Units Math
                 </a>
                 <br/><br/><br/>
                 <a href="https://meyda.education.gov.il/files/Exams/5-MATH-Formula.pdf" target="_blank" style={{textDecoration: 'none', color: 'black', fontSize: '30px'}}>
-                    <img src = {file} alt = "5 units" style = {{width:"80px",height:"80px"}}/>
+                    <img src = {formulla} alt = "5 units" style = {{width:"80px",height:"80px"}}/>
                     <br/>
                     5 Units Math
                 </a>
                 <br/><br/><br/>
                 <a href="https://www.ee.bgu.ac.il/~eransal/physics.files/learning_materials/formula_sheet.pdf" target="_blank" style={{textDecoration: 'none', color: 'black', fontSize: '30px'}}>
-                    <img src = {file} alt = "3 units" style = {{width:"80px",height:"80px"}}/>
+                    <img src = {formulla} alt = "3 units" style = {{width:"80px",height:"80px"}}/>
                     <br/>
                     5 Units Physics 
                 </a>
@@ -113,19 +115,20 @@ const Links = () => {
                 : telegram ?
                 <FilesDiv>
                     <a href="https://t.me/OrelHelpMe" target="_blank" style={{textDecoration: 'none', color: 'black', fontSize: '30px'}}>
-                        <img src = {file} alt = "orel gruop" style = {{width:"80px",height:"80px"}} />
+                        <img src = {link} alt = "orel gruop" style = {{width:"80px",height:"80px"}} />
                         <br/>
                         "Orel Help Me" Group (Very recommended)
                     </a>
                     <br/><br/><br/>
                     <a href="https://t.me/schoolhelp_math" target="_blank" style={{textDecoration: 'none', color: 'black', fontSize: '30px'}}>
-                        <img src = {file} alt = "global gruop" style = {{width:"80px",height:"80px"}} />
+                        <img src = {link} alt = "global gruop" style = {{width:"80px",height:"80px"}} />
                         <br/>
                         Global Group
                     </a>
                 </FilesDiv>
                 : null
             }
+            <br/><br/>
         </LinksDiv>
     )
 }

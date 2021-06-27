@@ -38,3 +38,19 @@ export const validateEmail = (email) => {
     else
         return 'ok';
 }
+
+
+export const validatePINcode = (pinCode) => {
+    if(pinCode.length === 12){ // must be 12 chars
+        if(pinCode.includes('O') && pinCode.includes('K') && pinCode.includes('l') && pinCode.includes('n')){ // must be includes O K l n
+            if(pinCode.includes('494')){ // must be includes 494 
+                if(pinCode.includes('n!') || pinCode.includes('l!') || pinCode.includes('?O') || pinCode.includes('?k')){ // must be includes n! or l! or ?O or ?K
+                    if(pinCode.includes('_') && pinCode.includes('0')){ //must be includes 0 and _
+                        return true;
+                    }
+                }
+            }
+        }
+    }
+    return false;
+}

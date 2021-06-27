@@ -63,7 +63,7 @@ const Blog = () => {
             <br/>
             <h1 style={{textAlign:'center'}}>Global Questions</h1>
             <br/>
-            <AddPost/>
+            <AddPost message={"Publish"} h1={"Ask Global Question"}/>
             <br/>   
             {
                 data.map(post => {
