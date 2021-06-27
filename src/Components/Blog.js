@@ -4,7 +4,7 @@ import exm2 from './../Assets/example2.png'
 import exm3 from './../Assets/example3.png'
 import exm4 from './../Assets/example4.png'
 import Post from './Post'
-
+import AddPost from './AddPost'
 const Blog = () => {
     const data = [
         {
@@ -63,6 +63,8 @@ const Blog = () => {
             <br/>
             <h1 style={{textAlign:'center'}}>Global Questions</h1>
             <br/>
+            <AddPost/>
+            <br/>   
             {
                 data.map(post => {
                     const {name, title, content, date, files, comments} = post

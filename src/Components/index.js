@@ -272,7 +272,7 @@ export const ImageComment = styled.img`
     margin: auto;
     &:hover
     {
-        transform: scale(1.5)
+        zoom: 170%
     }
 `;
 
@@ -331,4 +331,82 @@ export const FolderButton = styled.button`
 export const FilesDiv = styled.div`
     justify-content: center;
     padding: 40px;
+`;
+
+// AddPost
+export const AddPostDiv = styled.div`
+    position: relative;
+    text-align:center;
+    justify-content: center;
+    border: solid 2px black;
+    box-shadow: 8px 10px black;
+    border-radius: 20px 20px 20px 20px;
+    padding-bottom: 5px;
+    margin: auto;
+    background-color: #e6e6ff;
+    width: 90%;
+`;
+
+export const AddPostTitle = styled.input`
+    background-color: #b3b3ff;
+    border-radius: 15px 15px 15px 15px;
+    border: none;
+    padding: 5px 5px 5px 5px;
+    margin: 10px 10px 10px 10px;
+    width: 90%;
+    height: 5vh;
+    font-family: Comic Sans MS;
+
+`;
+
+export const AddPostDesc = styled.textarea`
+    background-color: #b3b3ff;
+    border-radius: 15px 15px 15px 15px;
+    border: none;
+    padding: 5px 5px 5px 5px;
+    resize: none;
+    width: 90%;
+    height: 40vh;
+    font-family: Comic Sans MS;
+
+`;
+
+export const ButtonAddPostFile = styled.button`
+    position: absolute;
+    left: 85%;
+    top: 84%;
+    border-radius: 18px;
+    background-color: #e6e6ff;
+    border: solid 1px transparent;
+    color: #000;
+    cursor:pointer;
+    &:hover {
+        background-color: transparent;
+        border-color: #fff;
+        transition: all .1s ease-in-out;
+    }
+    @media all and (min-width: 1024px)
+    {
+        left: 92%;
+    }
+`;
+
+export const ButtonAddPost = styled.button`
+    position: relative;
+    width: 80px;
+    height: 36px;
+    border-radius: 18px;
+    background-color: #b3b3ff;
+    border: solid 1px transparent;
+    color: #000;
+    font-size: 18px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all .1s ease-in-out;
+    &:hover {
+        background-color: transparent;
+        border-color: #fff;
+        transition: all .1s ease-in-out;
+    }
+
 `;
