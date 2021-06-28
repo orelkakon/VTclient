@@ -1,5 +1,5 @@
 import React from 'react';
-import {FooterDiv} from './Index'
+import {FooterDiv} from './index'
 
 const Footer = () => {
     return (

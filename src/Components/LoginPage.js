@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { LogoImg, LoginForm, InputField, LoginButton } from './Index'
+import { LogoImg, LoginForm, InputField, LoginButton } from './index'
 import Footer from './../Components/Footer';
 import { validatePassword, validateUsername } from './utils'
 import history from './History';

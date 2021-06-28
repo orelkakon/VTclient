@@ -1,4 +1,4 @@
-import { About, AboutContact } from './Index'
+import { About, AboutContact } from './index'
 import profile from './../Assets/profile.jpg'
 import phoneLogo from './../Assets/phone_logo.png'
 import mailLogo from './../Assets/mail_logo.png'
@@ -12,7 +12,7 @@ function AboutAndContact() {
             <About> 
             <br/>
             Hi everyone, 
-            I am <a href="http://www.orelkakon.online/" style={{color:'#bfbfbf'}}>Orel Kakon</a>.  <br/>
+            I am <a href="http://www.orelkakon.online/" style={{color:'#000'}}>Orel Kakon</a>.  <br/>
             I'm graduate of 5 study units in all relevant professions. Successful psychometric graduate and software engineer with a bachelor's degree from Ben Gurion University, I am currently working in the software field and also a private tutor for the past 7 years.<br/><br/>
             The purpose of this website is to connect students who need help with studies and preparation for exams.
             You can get help from other members on the site or ask for immediate online help from me for a fee.
@@ -20,10 +20,10 @@ function AboutAndContact() {
             <br/><br/> I would happy if you could share this website so we can reach as many people as possible !
             <br /><br />
             <u><h1>Contact Me</h1></u>
-            <img src ={mailLogo} alt="phoneLogo" height="27px" /><a href="mailto:orelkak@post.bgu.ac.il" style = {{textDecoration: "none", fontSize:"30px", color: "#bfbfbf"}}> Orelkak@post.bgu.ac.il</a> 
+            <img src ={mailLogo} alt="phoneLogo" height="27px" /><a href="mailto:orelkak@post.bgu.ac.il" style = {{textDecoration: "none", fontSize:"30px", color: "#000"}}> Orelkak@post.bgu.ac.il</a> 
             <br/>
-            <img src ={phoneLogo} alt="phoneLogo" height="30px" /><a href="tel:+97254-4650-494" style = {{textDecoration: "none", fontSize:"34px" , color: "#bfbfbf"}}> 054-4650494</a>
-            <br/><br/><br/>
+            <img src ={phoneLogo} alt="phoneLogo" height="30px" /><a href="tel:+97254-4650-494" style = {{textDecoration: "none", fontSize:"34px" , color: "#000"}}> 054-4650494</a>
+            <br/><br/><br/><br/><br/>
             </About>
         </AboutContact>
     )

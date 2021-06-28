@@ -23,10 +23,10 @@ export const HeaderList = styled.ul`
 
 export const HeaderListElement = styled.li`
     display: flex;  
-    padding: 14px;
+    padding: 10px;
     font-family: Comic Sans MS;
-    font-size: 2.8vw;
-    font-weight: bold;
+    font-size: 3.5vw;
+    font-weight: 950;
 `; 
 
 
@@ -37,6 +37,7 @@ export const FooterDiv = styled.div`
     width: 100%;
     text-align: center;
     font-size: 18px;
+    font-weight: 950;
 `; 
 
 
@@ -114,8 +115,8 @@ export const About = styled.text`
 
 export const AboutContact = styled.div`
     text-align: center;
-    font-size: 25px;
-    color: #bfbfbf;
+    font-size: 28px;
+    color: black;
     padding: 6px;
     font-family: Comic Sans MS;
 `;
@@ -409,4 +410,65 @@ export const ButtonAddPost = styled.button`
         transition: all .1s ease-in-out;
     }
 
+`;
+
+export const DirectButton = styled.button`
+    border: 5em;
+    cursor: pointer;
+    outline: none;
+    font-size: 16px;
+    -webkit-transform: translate(0);
+    transform: translate(0);
+    background-image: linear-gradient(45deg, #4568dc, #b06ab3);
+    padding: 0.7em 2em;
+    border-radius: 65px;
+    box-shadow: 1px 1px 10px rgba(255, 255, 255, 0.438);
+    -webkit-transition: box-shadow 0.25s;
+    transition: box-shadow 0.25s;
+    color: white;
+    &:hover {
+        background-image: linear-gradient(-45deg, #4568dc, #b06ab3);
+        box-shadow: 0 12px 24px rgba(128, 128, 128, 0.1);
+    };
+    &:after {
+        content: "";
+        border-radius: 18px;
+        position: absolute;
+        margin: 4px;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+        background: #0e0e10;
+    };
+`;
+
+export const DirectInput = styled.input`
+    width: 20vh;
+    color:white;
+    padding:10px;
+    margin: 2px;
+    border-radius:15px;
+    box-shadow:4px 4px 10px rgba(255, 255, 255, 0.438);
+    background-color: #1a1a1a;
+    ::placeholder {
+        color: gray;
+        opacity: 1; /* Firefox */
+    };    
+
+`;
+
+export const DirectDiv = styled.div`
+    text-align: center;
+    justify-content: center;
+`;
+
+export const DivTitles = styled.div`
+    border: solid 2px black;
+    border-radius: 20px 0px 20px 0px;
+    width: 90%;
+    margin: auto;
+    justify-content: center;
+    box-shadow: 3px 6px black;
 `;

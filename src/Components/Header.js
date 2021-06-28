@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Link, NavLink} from 'react-router-dom';
-import { HeaderDiv, HeaderList, HeaderListElement } from './Index'
+import { HeaderDiv, HeaderList, HeaderListElement } from './index'
 
 function Header() {
     return (

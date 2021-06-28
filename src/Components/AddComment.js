@@ -1,4 +1,4 @@
-import {InputAddComment, AddCommentt, ButtonAddComment, ButtonAddFile} from './Index'
+import {InputAddComment, AddCommentt, ButtonAddComment, ButtonAddFile} from './index'
 import addFile from '../Assets/addFile.png';
 
 const AddComment = () => {

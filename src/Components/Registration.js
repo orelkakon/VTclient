@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { LogoImg2, LoginForm, InputField, LoginButton } from './Index'
+import { LogoImg2, LoginForm, InputField, LoginButton } from './index'
 import Footer from './../Components/Footer';
 import { validatePassword, validateUsername, validatePhone, validateEmail } from './utils'
 

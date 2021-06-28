@@ -1,19 +1,35 @@
 import React, {useState} from 'react';
-import {validatePINcode} from './utils'
+import { validatePINcode } from './utils'
+import { DirectButton, DirectInput, DirectDiv, DivTitles } from './index' 
 
 
 const BuyPremiumUser = (props) => {
     const [pinCode,setPinCode] = useState("")
     const handlePinCode = (pincode) => {
-        validatePINcode(pincode) && props.setPremium(true)
+        if(validatePINcode(pincode)){
+            props.setPremium(true)
+            alert("Successful PIN code")
+        }
+        else{
+            alert("Wrong PIN code")
+        }
     }
     return (
         <div style={{textAlign:"center"}}> 
-            <h1>Sorry you are not a premium user!</h1>
-            <h2>The service costs 50 NIS, can be paid (bit, pay, paybox) through the site owner (details in About)</h2>
-            <h3>Enter the code you received on your cell phone after making a successful payment</h3>
-            <input placeholder="PIN code" onChange={e => setPinCode(e.target.value)}></input>
-            <button onClick={()=> handlePinCode(pinCode)}>press</button>
+            <DivTitles>
+                <h1>SORRY YOU ARE NOT A PREMIUM USER!</h1>
+                <h2 style={{fontFamily: "Comic Sans MS"}}>The service costs 50 NIS, can be paid (bit, pay, paybox) through the site owner (details in About)</h2>
+                <h2 style={{fontFamily: "Comic Sans MS"}}>Enter the code you received on your cellphone after making a successful payment</h2>
+            </DivTitles>
+            <br/>
+            <DirectDiv>
+                <DirectInput placeholder="PIN code" onChange={e => setPinCode(e.target.value)}></DirectInput>
+                <br/>
+                <DirectButton onClick={()=> handlePinCode(pinCode)}>Submit</DirectButton>
+            </DirectDiv>
+            <br/><br/>
+            <br/><br/>
+
         </div>
     );
 };

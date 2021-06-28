@@ -1,4 +1,4 @@
-import {CommentBorder, CommentDesc, NameAndDateComment, ImageComment } from './Index'
+import {CommentBorder, CommentDesc, NameAndDateComment, ImageComment } from './index'
 
 const Comment = (props) => {
     return (

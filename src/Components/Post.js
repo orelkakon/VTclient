@@ -1,4 +1,4 @@
-import { PostDiv, PostUser, PostTitle, PostImg, PostDate, PostContent, CommentsArea, CommentsTitle } from './Index'
+import { PostDiv, PostUser, PostTitle, PostImg, PostDate, PostContent, CommentsArea, CommentsTitle } from './index'
 import Comment from './Comment'
 import AddComment from './AddComment' 
 
