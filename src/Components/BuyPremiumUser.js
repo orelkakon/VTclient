@@ -5,7 +5,7 @@ import { DirectButton, DirectInput, DirectDiv, DivTitles } from './index'
 
 const BuyPremiumUser = (props) => {
     const [pinCode,setPinCode] = useState("")
-    const handlePinCode = (pincode) => {
+    const handlePinCode = async (pincode) => {
         if(validatePINcode(pincode)){
             props.setPremium(true)
             alert("Successful PIN code")
@@ -14,11 +14,12 @@ const BuyPremiumUser = (props) => {
             alert("Wrong PIN code")
         }
     }
+    
     return (
         <div style={{textAlign:"center"}}> 
             <DivTitles>
                 <h1>SORRY YOU ARE NOT A PREMIUM USER!</h1>
-                <h2 style={{fontFamily: "Comic Sans MS"}}>The service costs 50 NIS, can be paid (bit, pay, paybox) through the site owner (details in About)</h2>
+                <h2 style={{fontFamily: "Comic Sans MS"}}>The service costs 50 NIS per month, can be paid (bit, pay, paybox) through the site owner (details in About)</h2>
                 <h2 style={{fontFamily: "Comic Sans MS"}}>Enter the code you received on your cellphone after making a successful payment</h2>
             </DivTitles>
             <br/>
@@ -29,7 +30,6 @@ const BuyPremiumUser = (props) => {
             </DirectDiv>
             <br/><br/>
             <br/><br/>
-
         </div>
     );
 };

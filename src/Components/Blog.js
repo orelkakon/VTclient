@@ -5,70 +5,90 @@ import exm3 from './../Assets/example3.png'
 import exm4 from './../Assets/example4.png'
 import Post from './Post'
 import AddPost from './AddPost'
-const Blog = () => {
-    const data = [
-        {
-            "name": "orel kakon",
-            "title": "hard question please help",
-            "content": "basic algebra, but I dont success to solve",
-            "date": "17/06/2021",
-            "files": [exm1, exm1_1],
-            "comments" : [
-                {
-                    "description" : 'this is 9',
-                    "name": 'orel kakon',
-                    "date": "24/06/2021",
-                    "files": [exm4]
-                },
-                {
-                    "description" : 'this is long divided',
-                    "name": 'orel kakon',
-                    "date": "24/06/2021",
-                    "files": []
-                },
-            ]
-        },
-        {
-            "name": "hadar ivgi",
-            "title": "please help me orel",
-            "content": "Geometry and Trigo",
-            "date": "20/02/2021",
-            "files": [exm2],
-            "comments" : [
-                {
-                    "description" : 'this is sinus fourmula',
-                    "name": 'orel kakon',
-                    "date": "24/06/2021",
-                    "files": []
-                }
-            ]
-        },
-        {
-            "name": "dan levi",
-            "title": "Mulitple - question 24",
-            "content": "its very important for me",
-            "date": "10/10/2021",
-            "files": [exm3],
-            "comments" : [
-                // {
-                //     "description" : 'this is cross multiple',
-                //     "name": 'orel kakon',
-                //     "date": "24/06/2021"
-                // }
-            ]
+import config from './../config.json'
+import axios from 'axios'
+import { useState, useEffect } from 'react'
+
+const addNewPost = async(username, title, description, files) => {
+    await axios({
+        method: 'post',
+        url: `${config.protocol}://${config.host}:${config.port}${config.urls.addPost}`,
+        data: {
+            username: username,
+            title: title,
+            description: description,
+            date: new Date().toLocaleString().replace(',',''),
+            files: [] 
+        } 
+    }).then(result => {
+        if (result.data) {
+            alert('Successfully to add a new post')
+            window.location.reload();
         }
-    ]
+        else {
+            alert('Failed to add a new post')
+        }
+    }).catch(err => {
+        alert(err);
+    });
+}
+
+const getPosts = async() => {
+    return await axios({
+        method: 'get',
+        url: `${config.protocol}://${config.host}:${config.port}${config.urls.getPosts}`
+    }).then(result => {
+        if (result.data) {
+            return result.data
+        }
+        else {
+            alert('Failed to load posts. please refresh')
+        }
+    }).catch(err => {
+        alert(err);
+    });
+}
+
+const addNewComment = async(username, description, postid, files) => {
+    await axios({
+        method: 'post',
+        url: `${config.protocol}://${config.host}:${config.port}${config.urls.addNewComment}`,
+        data: {
+            username: username,
+            description: description,
+            postid: postid,
+            date: new Date().toLocaleString().replace(',',''),
+            files: [] 
+        } 
+    }).then(result => {
+        if (result.data) {
+            alert('Successfully to add a new comment')
+            window.location.reload();
+        }
+        else {
+            alert('Failed to add a new comment')
+        }
+    }).catch(err => {
+        alert(err);
+    });
+}
+
+const Blog = () => {
+    const [data, setData] = useState([])
+    useEffect(() => {
+        getPosts().then(result => setData(result.reverse()))
+    }, []);
     return (
         <div>
             <br/>
             <h1 style={{textAlign:'center'}}>Global Questions</h1>
             <br/>
-            <AddPost message={"Publish"} h1={"Ask Global Question"}/>
+            <AddPost message={"Publish"} h1={"Ask Global Question"} addpost={addNewPost}/>
             <br/>   
-            {
-                data.map(post => {
-                    const {name, title, content, date, files, comments} = post
-                    return(<><Post name={name} title={title} content={content} date={date} files={files} comments={comments}/> <br/></>)
+            {    
+                data && data.map(post => {
+                    const {name, title, content, date, files, comments, postid} = post
+                    return(<><Post name={name} title={title} content={content} date={date} files={files} comments={comments} postid={postid} addComment={addNewComment}/> <br/></>)
                 })
             }
             <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>

@@ -1,23 +1,32 @@
 import React, { useState } from 'react';
 import { LogoImg, LoginForm, InputField, LoginButton } from './index'
 import Footer from './../Components/Footer';
-import { validatePassword, validateUsername } from './utils'
-import history from './History';
+import { validateEmptyFields } from './utils'
+import config from './../config.json'
+import axios from 'axios'
 
-const handleLogin = (username, password) => {
-    const validateUser = validateUsername(username)
-    const validatePass = validatePassword(password)
-    console.log(validatePass, validateUser);
-    if(validateUser !== 'ok'){
-        alert(validateUser)
-        return
+const handleLogin = async(username, password) => {
+    if(validateEmptyFields(username) || validateEmptyFields(password)){
+        alert('Empty field');
+        return;
     }
-    if(validatePass !== 'ok'){
-        alert(validatePass)
-        return
-    }
-    alert('Successfully Login')
-    history.push('/Blog');
+    await axios({
+        method: 'post',
+        url: `${config.protocol}://${config.host}:${config.port}${config.urls.login}`,
+        data: {
+            username: username,
+            password: password
+        } 
+    }).then(result => {
+        if (result.data) {
+            alert('Successfully Login')
+        }
+        else {
+            alert('Failed Login')
+        }
+    }).catch(err => {
+        alert(err);
+    });
 }
 
 const LoginPage = () => {
@@ -27,11 +36,11 @@ const LoginPage = () => {
         <div className="login_page">
             <LogoImg />
             <LoginForm>
-                <InputField placeholder="Username" autocomplete="off" id="username" name="username" onChange={e => setUsername(e.target.value)}/><br/>
-                <InputField placeholder="Password" autocomplete="off" id="password" name="password" onChange={e => setPassword(e.target.value)}/><br/> <br/>
+                <InputField placeholder="Username" autocomplete="off" id="username" name="username" onChange={e => setUsername(e.target.value)} /><br />
+                <InputField placeholder="Password" autocomplete="off" id="password" name="password" onChange={e => setPassword(e.target.value)} /><br /> <br />
                 <LoginButton onClick={() => handleLogin(username, password)}>Sign In</LoginButton>
             </LoginForm>
-            <Footer />        
+            <Footer />
         </div>
     )
 }

@@ -236,7 +236,7 @@ export const InputAddComment = styled.textarea`
     padding: 0px 5px 0px 5px;
     resize: none;
     ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-        color: black;
+        color: gray;
         padding: 0px 5px 0px 5px;
         font-family: Comic Sans MS;
     };

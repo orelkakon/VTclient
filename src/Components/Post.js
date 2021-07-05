@@ -12,7 +12,7 @@ const Post = (props) => {
             <PostContent>{props.content}</PostContent>
             <br/>
             {
-                props.files.map( Image => {
+                props.files && props.files.map( Image => {
                     return (<PostImg image={Image}/>)
                 })  
             }
@@ -25,7 +25,7 @@ const Post = (props) => {
                         return ( <Comment comment={comment}/> )
                     })
                 }
-                <AddComment>
+                <AddComment addAcomment={props.addComment} postid={props.postid}>
                 </AddComment>
             </CommentsArea>
             

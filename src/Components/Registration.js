@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { LogoImg2, LoginForm, InputField, LoginButton } from './index'
 import Footer from './../Components/Footer';
 import { validatePassword, validateUsername, validatePhone, validateEmail } from './utils'
+import config from './../config.json'
+import axios from 'axios'
 
-const handleRegister = (username, password, email, phone) => {
+const handleRegister = async (username, password, email, phone) => {
     const validateUser = validateUsername(username)
     const validatePass = validatePassword(password)
     const validateEm = validateEmail(email)
@@ -25,7 +27,25 @@ const handleRegister = (username, password, email, phone) => {
         alert(validatePh)
         return
     }
-    alert('Successfully Register')
+    await axios({
+        method: 'post',
+        url: `${config.protocol}://${config.host}:${config.port}${config.urls.register}`,
+        data: {
+            username: username,
+            password: password,
+            phone:phone,
+            email:email
+        } 
+    }).then(result => {
+        if (result.data) {
+            alert('Successfully Register')
+        }
+        else {
+            alert('Failed Register')
+        }
+    }).catch(err => {
+        alert(err);
+    });
 }
 
 const Registration = () => {
