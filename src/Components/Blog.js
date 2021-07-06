@@ -10,6 +10,10 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 
 const addNewPost = async(username, title, description, files) => {
+    if(title === "" || description === ""){
+        alert('Empty title or description')
+        return
+    }
     await axios({
         method: 'post',
         url: `${config.protocol}://${config.host}:${config.port}${config.urls.addPost}`,
@@ -50,6 +54,10 @@ const getPosts = async() => {
 }
 
 const addNewComment = async(username, description, postid, files) => {
+    if(description === ""){
+        alert('Empty description')
+        return
+    }
     await axios({
         method: 'post',
         url: `${config.protocol}://${config.host}:${config.port}${config.urls.addNewComment}`,
@@ -76,19 +84,19 @@ const addNewComment = async(username, description, postid, files) => {
 const Blog = () => {
     const [data, setData] = useState([])
     useEffect(() => {
-        getPosts().then(result => setData(result.reverse()))
+        getPosts().then(result => result && setData(result.reverse()))
     }, []);
     return (
         <div>
             <br/>
             <h1 style={{textAlign:'center'}}>Global Questions</h1>
             <br/>
-            <AddPost message={"Publish"} h1={"Ask Global Question"} addpost={addNewPost}/>
+            <AddPost message={"Publish"} h1={"Ask Global Question"} addpost={addNewPost} kind='blog'/>
             <br/>   
             {    
                 data && data.map(post => {
                     const {name, title, content, date, files, comments, postid} = post
-                    return(<><Post name={name} title={title} content={content} date={date} files={files} comments={comments} postid={postid} addComment={addNewComment}/> <br/></>)
+                    return(<><Post name={name} title={title} content={content} date={date} files={files} comments={comments} postid={postid} addComment={addNewComment} kind='blog'/> <br/></>)
                 })
             }
             <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>

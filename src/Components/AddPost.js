@@ -15,7 +15,10 @@ const AddPost = (props) => {
             <ButtonAddPostFile>
                 <img src = {addFile} alt = "addFile" style={{width:"20px",height:"20px"}}/>
             </ButtonAddPostFile>
-            <ButtonAddPost onClick={() => props.addpost('orelkakon', title, description, ['./ss/ss'])}>{props.message}</ButtonAddPost>
+            <ButtonAddPost onClick={() => props.kind === 'blog' ? 
+            props.addpost(document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(',')), title, description, ['./ss/ss']):
+            props.addDPost(document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(',')), title, description, ['./ss/ss'])
+        }>{props.message}</ButtonAddPost>
         </AddPostDiv>
     )
 }

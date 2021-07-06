@@ -10,13 +10,16 @@ function Header() {
                     <HeaderListElement>
                         <NavLink to="/" style={{ textDecoration: 'none', color: 'black' }} activeClassName="nl" exact activeStyle={
                             { textDecoration: 'underline' }
-                        }>Login</NavLink>
+                        }>{document.cookie ? 'Logout' : 'Login'}</NavLink>
                     </HeaderListElement>
+                    {
+                    !document.cookie &&
                     <HeaderListElement>
                         <NavLink to="/Registration" style={{ textDecoration: 'none', color: 'black' }} activeClassName="nl" exact activeStyle={
                             { textDecoration: 'underline' }
                         }>Register</NavLink>
                     </HeaderListElement>
+                    } 
                     <HeaderListElement>
                         <NavLink to="/AboutAndContact" style={{ textDecoration: 'none', color: 'black' }} activeClassName="nl" exact activeStyle={
                             { textDecoration: 'underline' }

@@ -25,7 +25,7 @@ const Post = (props) => {
                         return ( <Comment comment={comment}/> )
                     })
                 }
-                <AddComment addAcomment={props.addComment} postid={props.postid}>
+                <AddComment addComment={props.addDComment} addAcomment={props.addComment} postid={props.postid} kind={props.kind}>
                 </AddComment>
             </CommentsArea>
             
