@@ -45,7 +45,7 @@ const BuyPremiumUser = (props) => {
         <div style={{ textAlign: "center" }}>
             <DivTitles>
                 <h1>ARE YOU PREMIUM USER ?!</h1>
-                <h2 style={{ fontFamily: "Comic Sans MS" }}>If not so the service costs 50 NIS per month, can be paid (bit, pay, paybox) through the site owner (details in About)</h2>
+                <h2 style={{ fontFamily: "Comic Sans MS" }}>If not so the service costs 100₪ (NIS) per month, can be paid (bit, pay, paybox) through the site owner (details in About)</h2>
                 <h2 style={{ fontFamily: "Comic Sans MS" }}>If yes enter the code you received on your cellphone after making a successful payment</h2>
             </DivTitles>
             <br />

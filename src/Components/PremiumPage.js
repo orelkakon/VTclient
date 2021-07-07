@@ -18,7 +18,7 @@ const addNewPost = async(username, title, description, files) => {
             title: title,
             description: description,
             date: new Date().toLocaleString().replace(',',''),
-            files: [] 
+            files: files 
         } 
     }).then(result => {
         if (result.data) {
@@ -46,7 +46,7 @@ const addNewComment = async(username, description, postid, files) => {
             description: description,
             postid: postid,
             date: new Date().toLocaleString().replace(',',''),
-            files: [] 
+            files: files
         } 
     }).then(result => {
         if (result.data) {
@@ -80,20 +80,38 @@ const getMyPosts = async(user) => {
     });
 }
 
+const getAdminPosts = async() => {
+    return await axios({
+        method: 'get',
+        url: `${config.protocol}://${config.host}:${config.port}${config.urls.getAdminPosts}`
+    }).then(result => {
+        if (result.data) {
+            return result.data
+        }
+        else {
+            alert('Failed to load posts. please refresh')
+        }
+    }).catch(err => {
+        alert(err);
+    });
+}
+
 const PremiumPage = () => {
     const [premium, setPremium] = useState(document.cookie.includes("yesPremium"));
     const [myData, setMyData] = useState([])
+    const admin = document.cookie.includes("orelkakon")
+    const user = document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(','));
     useEffect(() => {
-        const user = document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(','));
+        admin ? getAdminPosts().then(result => result && setMyData(result.reverse())) :
         getMyPosts(user).then(result => result && setMyData(result.reverse()))
     }, []);
     return (
         <div>
             <br/>
             {     
-                premium ?
+                (premium || admin)?
                 <>
-                <h1 style={{textAlign:'center'}}>Direct Questions</h1>
+                <h1 style={{textAlign:'center'}}>{admin ? 'Direct Questions for ' + user :'Direct Questions Of ' + user}</h1>
                 <br/>
                 <AddPost message={"Send"} h1={"Ask Direct Question"} addDPost={addNewPost} kind='direct'/>
                 <br/>

@@ -25,12 +25,18 @@ const Links = () => {
                 Study Meterials
             </FolderButton>
             <FolderButton onClick={() => {resetOptions(); setTelegram(true)}}>
-                Telegram Gruops
+                Media Gruops
             </FolderButton>
             <br/>
             {
                 formula ? 
                 <FilesDiv>
+                <a href="https://i.imagesup.co/images2/4277a36635824e8d93e482e93de1fd2c18c6386d.png" target="_blank" rel="noreferrer" style={{textDecoration: 'none', color: 'black', fontSize: '30px'}}>
+                    <img src = {formulla} alt = "3 units" style = {{width:"80px",height:"80px"}}/>
+                    <br/>
+                    Psycho Math
+                </a>
+                <br/><br/><br/>
                 <a href="https://meyda.education.gov.il/files/Exams/3-MATH-Formula.pdf" target="_blank" rel="noreferrer" style={{textDecoration: 'none', color: 'black', fontSize: '30px'}}>
                     <img src = {formulla} alt = "3 units" style = {{width:"80px",height:"80px"}}/>
                     <br/>
@@ -49,6 +55,24 @@ const Links = () => {
                     5 Units Math
                 </a>
                 <br/><br/><br/>
+                <a href="https://bagrut.gool.co.il/Misc/%D7%A0%D7%95%D7%A1%D7%97%D7%90%D7%95%D7%9F%20%D7%9E%D7%95%D7%A8%D7%97%D7%91%203%20%D7%99%D7%97'%20%D7%9E%D7%AA%D7%9E%D7%98%D7%99%D7%A7%D7%94.pdf" target="_blank" rel="noreferrer" style={{textDecoration: 'none', color: 'black', fontSize: '30px'}}>
+                    <img src = {formulla} alt = "3 units" style = {{width:"80px",height:"80px"}}/>
+                    <br/>
+                    3 Units Extended Math
+                </a>
+                <br/><br/><br/>
+                <a href="https://bagrut.gool.co.il/Misc/%D7%A0%D7%95%D7%A1%D7%97%D7%90%D7%95%D7%9F%20%D7%9E%D7%95%D7%A8%D7%97%D7%91%204%20%D7%99%D7%97'%20%D7%9E%D7%AA%D7%9E%D7%98%D7%99%D7%A7%D7%94.pdf" target="_blank" rel="noreferrer" style={{textDecoration: 'none', color: 'black', fontSize: '30px'}}>
+                    <img src = {formulla} alt = "4 units" style = {{width:"80px",height:"80px"}}/>
+                    <br/>
+                    4 Units Extended Math
+                </a>
+                <br/><br/><br/>
+                <a href="https://bagrut.gool.co.il/Misc/%D7%A0%D7%95%D7%A1%D7%97%D7%90%D7%95%D7%9F%20%D7%9E%D7%95%D7%A8%D7%97%D7%91%205%20%D7%99%D7%97'%20%D7%9E%D7%AA%D7%9E%D7%98%D7%99%D7%A7%D7%94.pdf" target="_blank" rel="noreferrer" style={{textDecoration: 'none', color: 'black', fontSize: '30px'}}>
+                    <img src = {formulla} alt = "5 units" style = {{width:"80px",height:"80px"}}/>
+                    <br/>
+                    5 Units Extended Math
+                </a>
+                <br/><br/><br/>
                 <a href="https://www.ee.bgu.ac.il/~eransal/physics.files/learning_materials/formula_sheet.pdf" target="_blank" rel="noreferrer" style={{textDecoration: 'none', color: 'black', fontSize: '30px'}}>
                     <img src = {formulla} alt = "3 units" style = {{width:"80px",height:"80px"}}/>
                     <br/>
@@ -57,6 +81,30 @@ const Links = () => {
                 </FilesDiv>
                 : study ?
                 <FilesDiv>
+                <a href="https://campus.gov.il/course/course-v1-mse-gov_psychometry/" target="_blank" rel="noreferrer" style={{textDecoration: 'none', color: 'black', fontSize: '30px'}}>
+                    <img src = {file} alt = "3 units" style = {{width:"80px",height:"80px"}} />
+                    <br/>
+                    Psycho Campus IL
+                </a>
+                <br/><br/>
+                <a href="https://nite.org.il/files/psych/new_psych/quantitive-hebrew.pdf" target="_blank" rel="noreferrer" style={{textDecoration: 'none', color: 'black', fontSize: '30px'}}>
+                    <img src = {file} alt = "3 units" style = {{width:"80px",height:"80px"}} />
+                    <br/>
+                    Psycho Math 
+                </a>
+                <br/><br/>
+                <a href="https://courses.campus.gov.il/assets/courseware/v1/1cc54b2362123fe3bbeed5f5673e8134/asset-v1:MSE+GOV_PsychometryHe+2018_1+type@asset+block/%D7%94%D7%A4%D7%A1%D7%99%D7%9B%D7%95%D7%9E%D7%98%D7%A8%D7%99_%D7%A9%D7%9C_%D7%94%D7%9E%D7%93%D7%99%D7%A0%D7%94_-_%D7%93%D7%A4%D7%99_%D7%A1%D7%99%D7%9B%D7%95%D7%9D_%D7%97%D7%A9%D7%99%D7%91%D7%94_%D7%9B%D7%9E%D7%95%D7%AA%D7%99%D7%AA.pdf" target="_blank" rel="noreferrer" style={{textDecoration: 'none', color: 'black', fontSize: '30px'}}>
+                    <img src = {file} alt = "3 units" style = {{width:"80px",height:"80px"}} />
+                    <br/>
+                    Psycho Math Campus IL
+                </a>
+                <br/><br/>
+                <a href="https://www.nite.org.il/psychometric-entrance-test/preparation/hebrew-practice-tests/" target="_blank" rel="noreferrer" style={{textDecoration: 'none', color: 'black', fontSize: '30px'}}>
+                    <img src = {file} alt = "3 units" style = {{width:"80px",height:"80px"}} />
+                    <br/>
+                    Psychometric exams
+                </a>
+                <br/><br/>
                 <a href="https://mathstar.co.il/%D7%97%D7%95%D7%9E%D7%A8%D7%99-%D7%A2%D7%96%D7%A8-%D7%91%D7%9E%D7%AA%D7%9E%D7%98%D7%99%D7%A7%D7%94/" target="_blank" rel="noreferrer" style={{textDecoration: 'none', color: 'black', fontSize: '30px'}}>
                     <img src = {file} alt = "3 units" style = {{width:"80px",height:"80px"}} />
                     <br/>
@@ -123,7 +171,7 @@ const Links = () => {
                     <a href="https://t.me/schoolhelp_math" target="_blank" rel="noreferrer" style={{textDecoration: 'none', color: 'black', fontSize: '30px'}}>
                         <img src = {link} alt = "global gruop" style = {{width:"80px",height:"80px"}} />
                         <br/>
-                        Global Group
+                        Global Math Group
                     </a>
                 </FilesDiv>
                 : null

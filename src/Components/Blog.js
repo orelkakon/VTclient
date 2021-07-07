@@ -1,8 +1,3 @@
-import exm1 from './../Assets/example1.png'
-import exm1_1 from './../Assets/example1_1.png'
-import exm2 from './../Assets/example2.png'
-import exm3 from './../Assets/example3.png'
-import exm4 from './../Assets/example4.png'
 import Post from './Post'
 import AddPost from './AddPost'
 import config from './../config.json'
@@ -22,7 +17,7 @@ const addNewPost = async(username, title, description, files) => {
             title: title,
             description: description,
             date: new Date().toLocaleString().replace(',',''),
-            files: [] 
+            files: files
         } 
     }).then(result => {
         if (result.data) {
@@ -66,7 +61,7 @@ const addNewComment = async(username, description, postid, files) => {
             description: description,
             postid: postid,
             date: new Date().toLocaleString().replace(',',''),
-            files: [] 
+            files: files
         } 
     }).then(result => {
         if (result.data) {

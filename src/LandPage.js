@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import Registration from './Components/Registration'
 import AboutAndContact from './Components/AboutAndContact'
 import PremiumPage from './Components/PremiumPage'
@@ -13,7 +13,7 @@ import './LandPage.css'
 const LandPage = () => {
   return (
     <div className="landpage">
-      <Router history={history}>
+      <BrowserRouter history={history}>
         <Header />
         <Route path="/" exact strict render={
           () => (
@@ -45,7 +45,7 @@ const LandPage = () => {
             <Links />
           )
         } /> 
-      </Router>
+      </BrowserRouter>
     </div>
   )
 }

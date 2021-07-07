@@ -1,6 +1,8 @@
-import {CommentBorder, CommentDesc, NameAndDateComment, ImageComment } from './index'
+import {CommentBorder, CommentDesc, NameAndDateComment } from './index'
+import './images.css'
 
 const Comment = (props) => {
+    
     return (
         <CommentBorder>
             <NameAndDateComment>{`${props.comment.name} - ${props.comment.date}`}</NameAndDateComment>
@@ -9,9 +11,7 @@ const Comment = (props) => {
             <CommentDesc>{props.comment.description}</CommentDesc>
             <br/>
             {  
-                props.comment.files && props.comment.files.map(img => {
-                    return(<ImageComment src={img}/>)
-                }) 
+                props.comment.files && props.comment.files[0] !== "null" && (<img src={props.comment.files} alt="not found 2" id="imgComment" className="img" />)
             }
         </CommentBorder>
     )

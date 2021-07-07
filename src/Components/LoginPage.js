@@ -5,56 +5,49 @@ import { validateEmptyFields } from './utils'
 import config from './../config.json'
 import axios from 'axios'
 
-const handleLogin = async (username, password) => {
-    if (validateEmptyFields(username) || validateEmptyFields(password)) {
-        alert('Empty field');
-        return;
-    }
-    await axios({
+const isLogin = (username, password) => {
+    return axios({
         method: 'post',
         url: `${config.protocol}://${config.host}:${config.port}${config.urls.login}`,
         data: {
             username: username,
             password: password
         }
-    }).then((result) => {
-        if (result.data) {
-            getMyPincode(username).then(res => {
-                if (res) {
-                    document.cookie = `username: ${username}, premium: yesPremium;`
-                    alert('Successfully Login')
-                }
-                else {
-                    document.cookie = `username: ${username},`
-                    alert('Successfully Login')
-                }
-            })
-        }
-        else {
-            alert('Failed Login')
-        }
-    }).catch(err => {
-        alert(err);
-    });
+    })
 }
 
-const getMyPincode = async (user) => {
-    return await axios({
+const getMyPincode = (user) => {
+    return axios({
         method: 'post',
         url: `${config.protocol}://${config.host}:${config.port}${config.urls.getMyPinCode}`,
         data: {
             username: user
         }
-    }).then(result => {
-        if (result.data) {
-            return result.data
+    })
+}
+
+const handleLogin = (username, password) => {
+    if (validateEmptyFields(username) || validateEmptyFields(password)) {
+        alert('Empty field');
+        return;
+    }
+    const login = isLogin(username, password)
+    const isPremium = getMyPincode(username)
+    axios.all([login, isPremium]).then(axios.spread((...response) => {
+        const isLoggedIn = response[0];
+        const isPremiumIn = response[1];
+        if (isLoggedIn.data && isPremiumIn){
+            document.cookie = `username: ${username}, premium: yesPremium;`
+            alert('Successfully Login')
         }
-        else {
-            return
+        else if(isLoggedIn.data){
+            document.cookie = `username: ${username},`
+            alert('Successfully Login')
+        } 
+        else{
+            alert('Failed Login')
         }
-    }).catch(err => {
-        alert(err);
-    });
+    }));
 }
 
 const handleLogout = (username) => {

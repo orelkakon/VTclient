@@ -10,6 +10,7 @@
         "getPosts": "/getallblogposts",
         "getMyPinCode": "/getpincode",
         "getMyPosts": "/getalldirectposts",
+        "getAdminPosts": "/getAdmindirectposts",
         "addDirectPost":"/adddirectpost",
         "addDirectComment":"/adddirectcomment"
     }

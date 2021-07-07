@@ -171,7 +171,7 @@ export const PostDiv = styled.div`
 
 export const PostUser = styled.text`
     display: flex;
-    font-size: 25px;
+    font-size: 20px;
     float: left;
     margin: 10px 0px 0px 10px;
     @media all and (min-width: 1024px)
@@ -182,7 +182,7 @@ export const PostUser = styled.text`
 
 export const PostDate = styled.text`
     display: flex;
-    font-size: 25px;
+    font-size: 20px;
     float: right;
     margin: 10px 10px 0px 0px;
     @media all and (min-width: 1024px)
@@ -197,6 +197,7 @@ export const PostTitle = styled.text`
     justify-content: center;
     text-decoration: underline;
     width: 100%;
+    
 `;
 
 export const PostContent = styled.text`
@@ -264,6 +265,8 @@ export const AddCommentt = styled.div`
 `;
 
 export const InputAddComment = styled.textarea`
+    text-align: start;
+    unicode-bidi: plaintext;
     background-color: #e6e6ff;
     width: 82%;
     min-height: 15vh;
@@ -393,10 +396,13 @@ export const AddPostTitle = styled.input`
     width: 90%;
     height: 5vh;
     font-family: Comic Sans MS;
-
+    text-align: start;
+    unicode-bidi: plaintext;
 `;
 
 export const AddPostDesc = styled.textarea`
+text-align: start;
+    unicode-bidi: plaintext;
     background-color: #b3b3ff;
     border-radius: 15px 15px 15px 15px;
     border: none;

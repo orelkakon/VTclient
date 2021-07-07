@@ -1,0 +1,78 @@
+.img{
+    display: flex; 
+    height: 60vh;
+    width: 60vw;
+    padding-bottom: 10px;
+    margin: auto;
+}
+@media all and (min-width: 1024px)
+{
+    .img:hover{
+        zoom: 150% 
+    }      
+}
+
+
+.imgComment{
+    height: auto;
+    max-width:90%;
+    max-height:90%;
+    margin: auto;
+}
+
+.imgComment:hover
+{
+    zoom: 170%
+}
+
+.uploadButton{
+    position: absolute;
+    left: 60%;
+    top: 84%;
+    width: 30vw;
+    border-radius: 15px;
+    background-color: #e6e6ff;
+    border: solid 1px transparent;
+    color: #000;
+    cursor:pointer;
+}
+.uploadButton:hover {
+    background-color: transparent;
+    border-color: #fff;
+    transition: all .1s ease-in-out;
+}
+
+@media all and (min-width: 1024px)
+{
+    .uploadButton{
+        left: 85%;
+        width: 8vw;
+    }
+}
+
+
+.uploadButton2{
+    position: absolute;
+    left: 56%;
+    top: 51%;
+    width: 28vw;
+
+    border-radius: 18px;
+    background-color: #b3b3ff;
+    border: solid 1px transparent;
+    color: #000;
+    cursor:pointer;
+}
+.uploadButton2:hover {
+    background-color: transparent;
+        border-color: #fff;
+        transition: all .1s ease-in-out;
+}
+
+@media all and (min-width: 1024px)
+{
+    .uploadButton2{
+        left: 87%;
+        width: 8vw;
+    }
+}
