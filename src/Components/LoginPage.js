@@ -36,7 +36,7 @@ const handleLogin = (username, password) => {
     axios.all([login, isPremium]).then(axios.spread((...response) => {
         const isLoggedIn = response[0];
         const isPremiumIn = response[1];
-        if (isLoggedIn.data && isPremiumIn){
+        if (isLoggedIn.data && isPremiumIn.data !== ""){
             document.cookie = `username: ${username}, premium: yesPremium;`
             alert('Successfully Login')
         }
@@ -62,14 +62,14 @@ const LoginPage = () => {
         <div className="login_page">
             <LogoImg />
             {
-                document.cookie ?
+                document.cookie.includes("username") ?
                     <LogoutForm>
                         <LogoutButton onClick={() => handleLogout(document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(',')))}>Logout</LogoutButton>
                     </LogoutForm>
                     :
                     <LoginForm>
                         <InputField placeholder="Username" autocomplete="off" id="username" name="username" onChange={e => setUsername(e.target.value)} /><br />
-                        <InputField placeholder="Password" autocomplete="off" id="password" name="password" onChange={e => setPassword(e.target.value)} /><br /> <br />
+                        <InputField type="password" placeholder="Password" autocomplete="off" id="password" name="password" onChange={e => setPassword(e.target.value)} /><br /> <br />
                         <LoginButton onClick={() => handleLogin(username, password)}>Sign In</LoginButton>
                     </LoginForm>
             }

@@ -12,6 +12,7 @@
         "getMyPosts": "/getalldirectposts",
         "getAdminPosts": "/getAdmindirectposts",
         "addDirectPost":"/adddirectpost",
-        "addDirectComment":"/adddirectcomment"
+        "addDirectComment":"/adddirectcomment",
+        "checkPinCode":"/checkexistpincode"
     }
 }

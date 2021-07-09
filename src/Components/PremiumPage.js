@@ -109,7 +109,7 @@ const PremiumPage = () => {
         <div>
             <br/>
             {     
-                (premium || admin)?
+                (premium || admin) ?
                 <>
                 <h1 style={{textAlign:'center'}}>{admin ? 'Direct Questions for ' + user :'Direct Questions Of ' + user}</h1>
                 <br/>

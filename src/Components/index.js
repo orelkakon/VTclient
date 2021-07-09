@@ -348,7 +348,7 @@ export const FolderButton = styled.button`
     background: black;
     box-shadow: 0 3px 2px 0 rgba(0,0,0,0.1);
     border-radius: 5px;
-    height: 45px;
+    height: 75px;
     padding: 30px 30px;
     width: 110px;
     color: #fff;

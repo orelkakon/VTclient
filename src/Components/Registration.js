@@ -10,7 +10,6 @@ const handleRegister = async (username, password, email, phone) => {
     const validatePass = validatePassword(password)
     const validateEm = validateEmail(email)
     const validatePh = validatePhone(phone)
-    console.log(validatePass, validateUser);
     if(validateUser !== 'ok'){
         alert(validateUser)
         return

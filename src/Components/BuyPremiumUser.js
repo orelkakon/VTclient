@@ -4,49 +4,49 @@ import { DirectButton, DirectInput, DirectDiv, DivTitles } from './index'
 import config from './../config.json'
 import axios from 'axios'
 
-const getMyPincode = async (user) => {
+const checkMyPincode = async (pin, user) => {
     return await axios({
         method: 'post',
-        url: `${config.protocol}://${config.host}:${config.port}${config.urls.getMyPinCode}`,
+        url: `${config.protocol}://${config.host}:${config.port}${config.urls.checkPinCode}`,
         data: {
+            pincode: pin,
             username: user
         }
     }).then(result => {
-        if (result.data) {
+        if (result) {
             return result.data
-        }
-        else {
-            alert('Failed get pin code')
         }
     }).catch(err => {
         alert(err);
     });
 }
 
-const BuyPremiumUser = (props) => {
-    const [pinCode, setPinCode] = useState("")
-    const handlePinCode = async (pincode) => {
-        if (validatePINcode(pincode)) {
-            const username = document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(','))
-            if (pincode === await getMyPincode(username)) {
-                props.setPremium(true)
-                alert("Successful PIN code")
-            }
-            else {
-                alert("Wrong PIN code")
-            }
+const handlePinCode = async (pincode) => {
+    if (validatePINcode(pincode)) {
+        const username = document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(','))
+        if (await checkMyPincode(pincode, username)) {
+            document.cookie = `username: ${username}, premium: yesPremium;`
+            alert("Successful PIN code")
+            window.location.reload();
         }
         else {
             alert("Wrong PIN code")
         }
     }
+    else {
+        alert("Wrong PIN code")
+    }
+}
+
+const BuyPremiumUser = () => {
+    const [pinCode, setPinCode] = useState("")
 
     return (
         <div style={{ textAlign: "center" }}>
             <DivTitles>
                 <h1>ARE YOU PREMIUM USER ?!</h1>
-                <h2 style={{ fontFamily: "Comic Sans MS" }}>If not so the service costs 100₪ (NIS) per month, can be paid (bit, pay, paybox) through the site owner (details in About)</h2>
-                <h2 style={{ fontFamily: "Comic Sans MS" }}>If yes enter the code you received on your cellphone after making a successful payment</h2>
+                <h2 style={{ fontFamily: "Comic Sans MS" }}>If not so this service costs 100₪ (NIS) per month, can be paid (bit, pay, paybox) through the site owner (details in About)</h2>
+                <h2 style={{ fontFamily: "Comic Sans MS" }}>If yes <a href="./"  style={{color: 'black' }}>login</a> to website and enter the code you received on your cellphone after making a successful payment</h2>
             </DivTitles>
             <br />
             <DirectDiv>

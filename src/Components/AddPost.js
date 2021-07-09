@@ -23,12 +23,11 @@ const AddPost = (props) => {
             <br />
             <AddPostDesc placeholder="Insert description..." onChange={e => setDescription(e.target.value)}></AddPostDesc>
             <br />
-            <label className='uploadButton'>Choose File
+            <label className='uploadButton' style={file ? {backgroundColor: "#8c1fcc"} : {backgroundColor: "#e6e6ff"}}>Choose File
             <input onChange={imageHandler} accept="image/*" type="file" style={{display:'none'}}/> </label>
-            
             <ButtonAddPost onClick={() => props.kind === 'blog' ?
-                props.addpost(document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(',')), title, description, file) :
-                props.addDPost(document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(',')), title, description, file)
+                props.addpost(document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(',')), title.replaceAll("'",""), description.replaceAll("'",""), file) :
+                props.addDPost(document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(',')), title.replaceAll("'",""), description.replaceAll("'",""), file)
             }>{props.message}</ButtonAddPost>
         </AddPostDiv>
     )
