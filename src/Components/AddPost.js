@@ -1,5 +1,5 @@
 import { AddPostDiv, AddPostDesc, AddPostTitle, ButtonAddPost } from './index'
-import react, { useState } from 'react'
+import { useState } from 'react'
 import './images.css'
 
 const AddPost = (props) => {

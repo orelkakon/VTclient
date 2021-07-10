@@ -19,12 +19,12 @@ function AboutAndContact() {
             The help will be accurate, clear and quick and will include personal guidance in case something is not clear.<br/> The relevant subjects are: Mathematics, English, Computer Science and Physics.
             <br/><br/> I would happy if you could share this website so we can reach as many people as possible !
             <br /><br />
+            </About>
             <u><h1>Contact Me</h1></u>
             <img src ={mailLogo} alt="phoneLogo" height="27px" /><a href="mailto:orelkak@post.bgu.ac.il" style = {{textDecoration: "none", fontSize:"30px", color: "#000"}}> Orelkak@post.bgu.ac.il</a> 
             <br/>
             <img src ={phoneLogo} alt="phoneLogo" height="30px" /><a href="tel:+97254-4650-494" style = {{textDecoration: "none", fontSize:"34px" , color: "#000"}}> 054-4650494</a>
             <br/><br/><br/><br/><br/>
-            </About>
         </AboutContact>
     )
 }

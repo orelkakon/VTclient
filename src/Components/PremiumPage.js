@@ -104,7 +104,7 @@ const PremiumPage = () => {
     useEffect(() => {
         admin ? getAdminPosts().then(result => result && setMyData(result.reverse())) :
         getMyPosts(user).then(result => result && setMyData(result.reverse()))
-    }, []);
+    }, [admin, user]);
     return (
         <div>
             <br/>

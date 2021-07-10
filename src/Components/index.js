@@ -71,7 +71,7 @@ export const LogoutForm = styled.form`
 export const InputField = styled.input`
     color:white;
     padding:10px;
-    margin: 2px;
+    margin: 1px;
     border-radius:15px;
     box-shadow:4px 4px 10px rgba(255, 255, 255, 0.438);
     background-color: #1a1a1a;
@@ -147,6 +147,7 @@ export const LogoutButton = styled.button`
 
 // About
 export const About = styled.text`
+    text-shadow: 2px 2px #0cc255;
 `;
 
 export const AboutContact = styled.div`

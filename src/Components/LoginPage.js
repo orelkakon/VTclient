@@ -4,6 +4,8 @@ import Footer from './../Components/Footer';
 import { validateEmptyFields } from './utils'
 import config from './../config.json'
 import axios from 'axios'
+import history from './History';
+
 
 const isLogin = (username, password) => {
     return axios({
@@ -39,10 +41,14 @@ const handleLogin = (username, password) => {
         if (isLoggedIn.data && isPremiumIn.data !== ""){
             document.cookie = `username: ${username}, premium: yesPremium;`
             alert('Successfully Login')
+            history.push('/AboutAndContact')
+            window.location.reload()
         }
         else if(isLoggedIn.data){
             document.cookie = `username: ${username},`
             alert('Successfully Login')
+                history.push('/AboutAndContact')
+                window.location.reload()
         } 
         else{
             alert('Failed Login')
