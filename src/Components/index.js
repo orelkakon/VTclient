@@ -228,7 +228,7 @@ export const CommentsArea = styled.div`
     border: none 2px black;
     border-radius: 10px 10px 10px 10px;
     padding-bottom: 10px;
-    margin: 10px 10px 10px 10px; 
+    margin: 10px 10px 20px 10px; 
     background-color: #b3b3ff;
 `;
 
@@ -270,7 +270,7 @@ export const InputAddComment = styled.textarea`
     unicode-bidi: plaintext;
     background-color: #e6e6ff;
     width: 82%;
-    min-height: 15vh;
+    min-height: 14vh;
     border-radius: 15px 15px 15px 15px;
     border: none;
     padding: 0px 5px 0px 5px;
@@ -282,6 +282,7 @@ export const InputAddComment = styled.textarea`
     };
     @media all and (min-width: 1024px)
     {
+        min-height: 18vh;
         width: 95%;
     }
 `;
@@ -514,4 +515,32 @@ export const DivTitles = styled.div`
     margin: auto;
     justify-content: center;
     box-shadow: 3px 6px black;
+`;
+
+export const ButtonDeletePost = styled.button`
+    position: relative;
+    width: 120px;
+    height: 23px;
+    border-radius: 12px;
+    background-color: #b3b3ff;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    border: solid 1px transparent;
+    color: #000;
+    font-size: 14px;
+    font-weight: 250;
+    cursor: pointer;
+    transition: all .1s ease-in-out;
+    &:hover {
+        background-color: transparent;
+        border-color: #fff;
+        transition: all .1s ease-in-out;
+    }
+    margin: 10px 10px 10px 10px; 
+    left: 57%;
+    @media all and (min-width: 1024px)
+    {
+        left: 88%;
+    }
 `;

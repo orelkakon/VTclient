@@ -13,6 +13,9 @@
         "getAdminPosts": "/getAdmindirectposts",
         "addDirectPost":"/adddirectpost",
         "addDirectComment":"/adddirectcomment",
-        "checkPinCode":"/checkexistpincode"
+        "checkPinCode":"/checkexistpincode",
+        "deletePost":"/deletepost",
+        "deletePostD":"/deletedirectpost"
+
     }
 }

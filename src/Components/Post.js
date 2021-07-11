@@ -1,7 +1,23 @@
 import { PostDiv, PostUser, PostTitle, PostDate, PostContent, CommentsArea, CommentsTitle } from './index'
 import Comment from './Comment'
 import AddComment from './AddComment'
+import DeletePost from './DeletePost'
+import config from './../config.json'
+import axios from 'axios'
 import './images.css'
+
+const deletePost = async (postid, kind) => {
+    await axios({
+        method: 'post',
+        url: `${config.protocol}://${config.host}:${config.port}${kind === 'blog' ? config.urls.deletePost : config.urls.deletePostD}`,
+        data: {
+            postid: postid,
+        }
+    })
+    alert('successful delete post')
+    window.location.reload()
+}
+
 
 const Post = (props) => {
     return (
@@ -25,7 +41,11 @@ const Post = (props) => {
                 }
                 <AddComment addComment={props.addDComment} addAcomment={props.addComment} postid={props.postid} kind={props.kind}>
                 </AddComment>
+
             </CommentsArea>
+            {
+                (document.cookie.includes(` ${props.name},`) || document.cookie.includes(` orelkakon,`)) && <DeletePost delete={deletePost} postid={props.postid} kind={props.kind}/>
+            }
 
         </PostDiv>
     )

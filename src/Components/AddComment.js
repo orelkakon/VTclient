@@ -19,11 +19,11 @@ const AddComment = (props) => {
             <InputAddComment placeholder="Insert a new comment..." onChange={e => setComment(e.target.value)}></InputAddComment>
             <label className='uploadButton2' style={file ? {backgroundColor: "#8c1fcc"} : {backgroundColor: "#b3b3ff"}}>Choose File
             <input onChange={imageHandler} accept="image/*" type="file" style={{display:'none'}}/> </label>
-            <br/>
             <ButtonAddComment onClick={() => props.kind === 'blog' ? 
                 props.addAcomment(document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(',')), comment.replaceAll("'",""), props.postid, file):
                 props.addComment(document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(',')), comment.replaceAll("'",""), props.postid, file)
             }>Send</ButtonAddComment>
+            
         </AddCommentt>
     )
 }
