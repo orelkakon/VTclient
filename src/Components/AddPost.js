@@ -1,6 +1,8 @@
 import { AddPostDiv, AddPostDesc, AddPostTitle, ButtonAddPost } from './index'
 import { useState } from 'react'
 import './images.css'
+import icon from './../Assets/upload.png'
+
 
 const AddPost = (props) => {
     const [title, setTitle] = useState("")
@@ -23,7 +25,7 @@ const AddPost = (props) => {
             <br />
             <AddPostDesc placeholder="Insert description..." onChange={e => setDescription(e.target.value)}></AddPostDesc>
             <br />
-            <label className='uploadButton' style={file ? {backgroundColor: "#8c1fcc"} : {backgroundColor: "#e6e6ff"}}>Choose File
+            <label className='uploadButton' style={file ? {backgroundColor: "green"} : {backgroundColor: "transparent"}}><img src = {icon} alt = "GitHub" style = {{width:"30px",height:"30px"}}/>
             <input onChange={imageHandler} accept="image/*" type="file" style={{display:'none'}}/> </label>
             <ButtonAddPost onClick={() => props.kind === 'blog' ?
                 props.addpost(document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(',')), title.replaceAll("'",""), description.replaceAll("'",""), file) :

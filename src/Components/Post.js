@@ -36,7 +36,7 @@ const Post = (props) => {
                 <br /><br />
                 {
                     props.comments.map(comment => {
-                        return (<Comment comment={comment} />)
+                        return (<Comment comment={comment} kind={props.kind}/>)
                     })
                 }
                 <AddComment addComment={props.addDComment} addAcomment={props.addComment} postid={props.postid} kind={props.kind}>

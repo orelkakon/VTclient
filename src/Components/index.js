@@ -12,14 +12,14 @@ export const HeaderDiv = styled.div`
     width: fit-content;
     margin: auto;
     text-align: center;
-`; 
+`;
 
 export const HeaderList = styled.ul`
     display: flex;
     align-items:center;
     justify-content: center;
     padding-left: 0px;
-`; 
+`;
 
 export const HeaderListElement = styled.li`
     display: flex;  
@@ -27,7 +27,7 @@ export const HeaderListElement = styled.li`
     font-family: Comic Sans MS;
     font-size: 3.5vw;
     font-weight: 950;
-`; 
+`;
 
 
 // Footer
@@ -38,7 +38,7 @@ export const FooterDiv = styled.div`
     text-align: center;
     font-size: 18px;
     font-weight: 950;
-`; 
+`;
 
 
 // Login & Register Page
@@ -245,7 +245,7 @@ export const CommentBorder = styled.div`
     padding-bottom: 5px;
     margin: 0px 25px 5px 25px;
     background-color: #e6e6ff;
-`;  
+`;
 
 export const CommentDesc = styled.text`
     font-size: 20px;
@@ -519,8 +519,6 @@ export const DivTitles = styled.div`
 
 export const ButtonDeletePost = styled.button`
     position: relative;
-    width: 120px;
-    height: 23px;
     border-radius: 12px;
     background-color: #b3b3ff;
     text-align: center;
@@ -538,9 +536,35 @@ export const ButtonDeletePost = styled.button`
         transition: all .1s ease-in-out;
     }
     margin: 10px 10px 10px 10px; 
-    left: 57%;
+    left: 80%;
     @media all and (min-width: 1024px)
     {
-        left: 88%;
+        left: 94%;
+    }
+`;
+
+export const ButtonDeleteComment = styled.button`
+    position: relative;
+    border-radius: 12px;
+    background-color: #b3b3ff;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    border: solid 1px transparent;
+    color: #000;
+    font-size: 14px;
+    font-weight: 250;
+    cursor: pointer;
+    transition: all .1s ease-in-out;
+    &:hover {
+        background-color: transparent;
+        border-color: #fff;
+        transition: all .1s ease-in-out;
+    }
+    margin: 10px 10px 10px 10px; 
+    left: 75%;
+    @media all and (min-width: 1024px)
+    {
+        left: 93%;
     }
 `;

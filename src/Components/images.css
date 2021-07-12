@@ -27,12 +27,9 @@
 
 .uploadButton{
     position: absolute;
-    left: 60%;
-    top: 84%;
-    width: 30vw;
-    border-radius: 15px;
-    background-color: #e6e6ff;
-    border: solid 1px transparent;
+    left: 83%;
+    top: 81%;
+    border-radius: 5px;
     color: #000;
     cursor:pointer;
 }
@@ -45,35 +42,28 @@
 @media all and (min-width: 1024px)
 {
     .uploadButton{
-        left: 85%;
-        width: 8vw;
+        left: 91%;
     }
 }
 
 
 .uploadButton2{
     position: absolute;
-    left: 56%;
-    top: 51%;
-    width: 28vw;
-
-    border-radius: 18px;
-    background-color: #b3b3ff;
-    border: solid 1px transparent;
+    left: 80%;
+    top: 42%;
     color: #000;
+    border-radius: 5px;
     cursor:pointer;
 }
 .uploadButton2:hover {
     background-color: transparent;
-        border-color: #fff;
-        transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
 }
 
 @media all and (min-width: 1024px)
 {
     .uploadButton2{
-        left: 87%;
-        width: 8vw;
+        left: 94%;
     }
 }
 

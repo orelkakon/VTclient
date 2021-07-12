@@ -15,7 +15,8 @@
         "addDirectComment":"/adddirectcomment",
         "checkPinCode":"/checkexistpincode",
         "deletePost":"/deletepost",
-        "deletePostD":"/deletedirectpost"
-
+        "deletePostD":"/deletedirectpost",
+        "deleteComment": "/deletecomment",
+        "deleteCommentD": "/deletedirectcomment"
     }
 }
