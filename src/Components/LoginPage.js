@@ -5,8 +5,8 @@ import { validateEmptyFields } from './utils'
 import config from './../config.json'
 import axios from 'axios'
 import history from './History';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { notify } from './../LandPage';
+
 
 const isLogin = (username, password) => {
     return axios({
@@ -29,12 +29,9 @@ const getMyPincode = (user) => {
     })
 }
 
-const handleLogin = (username, password) => {
+const handleLogin = async(username, password) => {
     if (validateEmptyFields(username) || validateEmptyFields(password)) {
-        toast.error("Empty field!", {
-            position: "bottom-right",
-            autoClose: 20000
-        });
+        await notify("Empty field!")
         return;
     }
     const login = isLogin(username, password)
@@ -44,36 +41,24 @@ const handleLogin = (username, password) => {
         const isPremiumIn = response[1];
         if (isLoggedIn.data && isPremiumIn.data !== "") {
             document.cookie = `username: ${username}, premium: yesPremium;`
-            toast.info('Successfully Login', {
-                position: "bottom-right",
-                autoClose: 20000
-            });
+            notify('Successfully Login')
             history.push('/AboutAndContact')
             window.location.reload()
         }
         else if (isLoggedIn.data) {
             document.cookie = `username: ${username},`
-            toast.info('Successfully Login', {
-                position: "bottom-right",
-                autoClose: 20000
-            });
+            notify('Successfully Login')
             history.push('/AboutAndContact')
             window.location.reload()
         }
         else {
-            toast.error('Failed Login', {
-                position: "bottom-right",
-                autoClose: 20000
-            });
+            notify('Failed Login')
         }
     }));
 }
 
 const handleLogout = (username) => {
-    toast.info(`Bye Bye ${username}`, {
-        position: "bottom-right",
-        autoClose: 20000
-    });
+    notify(`Bye Bye ${username}`)
     document.cookie = `username: ${username}; expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
 }
 
@@ -82,7 +67,7 @@ const LoginPage = () => {
     const [password, setPassword] = useState("")
     return (
         <div className="login_page">
-            <ToastContainer />
+            
             <LogoImg />
             {
                 document.cookie.includes("username") ?

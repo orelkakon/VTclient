@@ -5,47 +5,33 @@ import { validatePassword, validateUsername, validatePhone, validateEmail } from
 import config from './../config.json'
 import history from './History';
 import axios from 'axios'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { notify } from './../LandPage';
+
+
 
 const handleRegister = async (username, password, confirmPassword, email, phone) => {
     const validateUser = validateUsername(username)
     const validatePass = validatePassword(password)
     const validateEm = validateEmail(email)
     const validatePh = validatePhone(phone)
-    if(validateUser !== 'ok'){
-        toast.error(`${validateUser}`, {
-            position: "bottom-right",
-            autoClose: 20000
-        });
+    if (validateUser !== 'ok') {
+        notify(validateUser)
         return
     }
-    if(validatePass !== 'ok'){
-        toast.error(`${validatePass}`, {
-            position: "bottom-right",
-            autoClose: 20000
-        });
+    if (validatePass !== 'ok') {
+        notify(validatePass)
         return
     }
-    if(validateEm !== 'ok'){
-        toast.error(`${validateEm}`, {
-            position: "bottom-right",
-            autoClose: 20000
-        });
+    if (validateEm !== 'ok') {
+        notify(validateEm)
         return
     }
-    if(validatePh !== 'ok'){
-        toast.error(`${validatePh}`, {
-            position: "bottom-right",
-            autoClose: 20000
-        });
+    if (validatePh !== 'ok') {
+        notify(validatePh)
         return
     }
-    if(confirmPassword !== password){
-        toast.error('passwords are not identical', {
-            position: "bottom-right",
-            autoClose: 20000
-        });
+    if (confirmPassword !== password) {
+        notify('passwords are not identical')
         return
     }
     await axios({
@@ -54,29 +40,20 @@ const handleRegister = async (username, password, confirmPassword, email, phone)
         data: {
             username: username,
             password: password,
-            phone:phone,
-            email:email
-        } 
+            phone: phone,
+            email: email
+        }
     }).then(result => {
         if (result.data) {
-            toast.info('Successfully Register', {
-                position: "bottom-right",
-                autoClose: 20000
-            });
+            notify('Successfully Register')
             history.push('/')
             window.location.reload()
         }
         else {
-            toast.error('Failed Register', {
-                position: "bottom-right",
-                autoClose: 20000
-            });
+            notify('Failed Register')
         }
     }).catch(err => {
-        toast.erorr(`${err}`, {
-            position: "bottom-right",
-            autoClose: 20000
-        });
+        notify(err)
     });
 }
 
@@ -88,19 +65,19 @@ const Registration = () => {
     const [email, setEmail] = useState("")
     return (
         <div className="login_page">
-            <ToastContainer />
-            <br/>
+
+            <br />
             <LogoImg2 />
-            <br/>
+            <br />
             <LoginForm>
-                <InputField placeholder="Username" autocomplete="off" id="username" name="username" onChange={e => setUsername(e.target.value)}/><br/>
-                <InputField type="password" placeholder="Password" autocomplete="off" id="password" name="password" onChange={e => setPassword(e.target.value)}/><br/>
-                <InputField type="password" placeholder="Confirm Password" autocomplete="off" id="cpassword" name="cpassword" onChange={e => setConfirmPassword(e.target.value)}/><br/>
-                <InputField placeholder="Phone" autocomplete="off" id="phone" name="phone" onChange={e => setPhone(e.target.value)}/><br/>
-                <InputField placeholder="Email" autocomplete="off" id="email" name="email" onChange={e => setEmail(e.target.value)}/><br/> <br/>
+                <InputField placeholder="Username" autocomplete="off" id="username" name="username" onChange={e => setUsername(e.target.value)} /><br />
+                <InputField type="password" placeholder="Password" autocomplete="off" id="password" name="password" onChange={e => setPassword(e.target.value)} /><br />
+                <InputField type="password" placeholder="Confirm Password" autocomplete="off" id="cpassword" name="cpassword" onChange={e => setConfirmPassword(e.target.value)} /><br />
+                <InputField placeholder="Phone" autocomplete="off" id="phone" name="phone" onChange={e => setPhone(e.target.value)} /><br />
+                <InputField placeholder="Email" autocomplete="off" id="email" name="email" onChange={e => setEmail(e.target.value)} /><br /> <br />
                 <LoginButton onClick={() => handleRegister(username, password, confirmPassword, email, phone)}>Sign Up</LoginButton>
             </LoginForm>
-            <Footer />        
+            <Footer />
         </div>
     )
 }

@@ -3,8 +3,8 @@ import { validatePINcode } from './utils'
 import { DirectButton, DirectInput, DirectDiv, DivTitles } from './index'
 import config from './../config.json'
 import axios from 'axios'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { notify } from './../LandPage';
+
 
 const checkMyPincode = async (pin, user) => {
     return await axios({
@@ -19,10 +19,7 @@ const checkMyPincode = async (pin, user) => {
             return result.data
         }
     }).catch(err => {
-        toast.error(`${err}`, {
-            position: "bottom-right",
-            autoClose: 20000
-        });
+        notify(err)
     });
 }
 
@@ -31,24 +28,15 @@ const handlePinCode = async (pincode) => {
         const username = document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(','))
         if (await checkMyPincode(pincode, username)) {
             document.cookie = `username: ${username}, premium: yesPremium;`
-            toast.info('Successful PIN code', {
-                position: "bottom-right",
-                autoClose: 20000
-            });
+            notify('Successful PIN code')
             window.location.reload();
         }
         else {
-            toast.error('Wrong PIN code', {
-                position: "bottom-right",
-                autoClose: 20000
-            });
+            notify('Wrong PIN code')
         }
     }
     else {
-        toast.error('Wrong PIN code', {
-            position: "bottom-right",
-            autoClose: 20000
-        });
+        notify('Wrong PIN code')
     }
 }
 
@@ -57,11 +45,11 @@ const BuyPremiumUser = () => {
 
     return (
         <div style={{ textAlign: "center" }}>
-            <ToastContainer />
+            
             <DivTitles>
                 <h1>ARE YOU PREMIUM USER ?!</h1>
                 <h2 style={{ fontFamily: "Comic Sans MS" }}>If not so this service costs 100₪ (NIS) per month, can be paid (bit, pay, paybox) through the site owner (details in About)</h2>
-                <h2 style={{ fontFamily: "Comic Sans MS" }}>If yes <a href="./"  style={{color: 'black' }}>login</a> to website and enter the code you received on your cellphone after making a successful payment</h2>
+                <h2 style={{ fontFamily: "Comic Sans MS" }}>If yes <a href="./" style={{ color: 'black' }}>login</a> to website and enter the code you received on your cellphone after making a successful payment</h2>
             </DivTitles>
             <br />
             <DirectDiv>

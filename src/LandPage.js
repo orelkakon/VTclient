@@ -9,10 +9,25 @@ import Header from './Components/Header'
 import history from './Components/History';
 import Links from './Components/Links'
 import './LandPage.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+export const notify = async (msg) => {
+  await toast.dark(msg, {
+    position: "bottom-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined
+  })
+}
 
 const LandPage = () => {
   return (
     <div className="landpage">
+      <ToastContainer />
       <BrowserRouter history={history}>
         <Header />
         <Route path="/" exact strict render={
@@ -39,12 +54,12 @@ const LandPage = () => {
           () => (
             <PremiumPage />
           )
-        } />  
+        } />
         <Route path="/Links" exact strict render={
           () => (
             <Links />
           )
-        } /> 
+        } />
       </BrowserRouter>
     </div>
   )
