@@ -5,6 +5,8 @@ import DeletePost from './DeletePost'
 import config from './../config.json'
 import axios from 'axios'
 import './images.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const deletePost = async (postid, kind) => {
     await axios({
@@ -14,7 +16,10 @@ const deletePost = async (postid, kind) => {
             postid: postid,
         }
     })
-    alert('successful delete post')
+    toast.info(`successful delete post`, {
+        position: "bottom-right",
+        autoClose: 20000
+    });
     window.location.reload()
 }
 
@@ -22,6 +27,7 @@ const deletePost = async (postid, kind) => {
 const Post = (props) => {
     return (
         <PostDiv>
+            <ToastContainer />
             <PostUser>{props.name}</PostUser>
             <PostDate>{props.date}</PostDate>
             <br /><br />

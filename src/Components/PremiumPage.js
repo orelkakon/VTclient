@@ -5,21 +5,31 @@ import BuyPremiumUser from './BuyPremiumUser'
 import config from './../config.json'
 import axios from 'axios'
 import emailjs from 'emailjs-com';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const sendEmail = (msg) => {
     emailjs.send('service_lpbnhwu', 'template_wrk83k7', msg, 'user_E410jnUupeNSDYfZ0Wlhi')
         .then((result) => {
-            alert(result)
+            toast.error(`${result}`, {
+                position: "bottom-right",
+                autoClose: 20000
+            });
         }, (error) => {
-            alert(error);
+            toast.error(`${error}`, {
+                position: "bottom-right",
+                autoClose: 20000
+            });
         });
 }
 
 
 const addNewPost = async (username, title, description, files) => {
     if (title === "" || description === "") {
-        alert('Empty title or description')
+        toast.error('Empty title or description', {
+            position: "bottom-right",
+            autoClose: 20000
+        });
         return
     }
     await axios({
@@ -41,20 +51,32 @@ const addNewPost = async (username, title, description, files) => {
                 message: description
             };
             sendEmail(messageParams)
-            alert('Successfully to add a new direct post')
+            toast.error('Successfully to add a new direct post', {
+                position: "bottom-right",
+                autoClose: 20000
+            });
             window.location.reload();
         }
         else {
-            alert('Failed to add a new direct post')
+            toast.error('Failed to add a new direct post', {
+                position: "bottom-right",
+                autoClose: 20000
+            });
         }
     }).catch(err => {
-        alert(err);
+        toast.error(`${err}`, {
+            position: "bottom-right",
+            autoClose: 20000
+        });
     });
 }
 
 const addNewComment = async (username, description, postid, files) => {
     if (description === "") {
-        alert('Empty description')
+        toast.error('Empty description', {
+            position: "bottom-right",
+            autoClose: 20000
+        });
         return
     }
     await axios({
@@ -69,14 +91,23 @@ const addNewComment = async (username, description, postid, files) => {
         }
     }).then(result => {
         if (result.data) {
-            alert('Successfully to add a new direct comment')
+            toast.info('Successfully to add a new direct comment', {
+                position: "bottom-right",
+                autoClose: 20000
+            });
             window.location.reload();
         }
         else {
-            alert('Failed to add a new direct comment')
+            toast.error('Failed to add a new direct comment', {
+                position: "bottom-right",
+                autoClose: 20000
+            });
         }
     }).catch(err => {
-        alert(err);
+        toast.error(`${err}`, {
+            position: "bottom-right",
+            autoClose: 20000
+        });
     });
 }
 
@@ -92,10 +123,16 @@ const getMyPosts = async (user) => {
             return result.data
         }
         else {
-            alert('Failed to load posts. please refresh')
+            toast.error('Failed to load posts. please refresh', {
+                position: "bottom-right",
+                autoClose: 20000
+            });
         }
     }).catch(err => {
-        alert(err);
+        toast.error(`${err}`, {
+            position: "bottom-right",
+            autoClose: 20000
+        });
     });
 }
 
@@ -108,10 +145,16 @@ const getAdminPosts = async () => {
             return result.data
         }
         else {
-            alert('Failed to load posts. please refresh')
+            toast.error('Failed to load posts. please refresh', {
+                position: "bottom-right",
+                autoClose: 20000
+            });
         }
     }).catch(err => {
-        alert(err);
+        toast.error(`${err}`, {
+            position: "bottom-right",
+            autoClose: 20000
+        });
     });
 }
 
@@ -126,6 +169,7 @@ const PremiumPage = () => {
     }, [admin, user]);
     return (
         <div>
+            <ToastContainer />
             <br />
             {
                 (premium || admin) ?

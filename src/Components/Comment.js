@@ -3,6 +3,8 @@ import './images.css'
 import DeleteComment from './DeleteComment'
 import config from './../config.json'
 import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const deleteComment = async(commentid, kind) => {
     await axios({
@@ -12,13 +14,17 @@ const deleteComment = async(commentid, kind) => {
             commentid: commentid,
         }
     })
-    alert('successful delete comment')
+    toast.info(`successful delete post`, {
+        position: "bottom-right",
+        autoClose: 20000
+    });
     window.location.reload()
 }
 
 const Comment = (props) => {
     return (
         <CommentBorder>
+            <ToastContainer />
             <NameAndDateComment>{`${props.comment.name} - ${props.comment.date}`}</NameAndDateComment>
             <br />
             <br />

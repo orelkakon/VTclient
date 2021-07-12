@@ -4,10 +4,15 @@ import config from './../config.json'
 import axios from 'axios'
 import NeedRegisterUser from './NeedRegisterUser'
 import { useState, useEffect } from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const addNewPost = async (username, title, description, files) => {
     if (title === "" || description === "") {
-        alert('Empty title or description')
+        toast.error('Empty title or description', {
+            position: "bottom-right",
+            autoClose: 20000
+        });
         return
     }
     await axios({
@@ -22,14 +27,23 @@ const addNewPost = async (username, title, description, files) => {
         }
     }).then(result => {
         if (result.data) {
-            alert('Successfully to add a new post')
+            toast.info('Successfully to add a new post', {
+                position: "bottom-right",
+                autoClose: 20000
+            });
             window.location.reload();
         }
         else {
-            alert('Failed to add a new post')
+            toast.error('Failed to add a new post', {
+                position: "bottom-right",
+                autoClose: 20000
+            });
         }
     }).catch(err => {
-        alert(err);
+        toast.error(`${err}`, {
+            position: "bottom-right",
+            autoClose: 20000
+        });
     });
 }
 
@@ -42,16 +56,25 @@ const getPosts = async () => {
             return result.data
         }
         else {
-            alert('Failed to load posts. please refresh')
+            toast.error('Failed to load posts. please refresh', {
+                position: "bottom-right",
+                autoClose: 20000
+            });
         }
     }).catch(err => {
-        alert(err);
+        toast.error(`${err}`, {
+            position: "bottom-right",
+            autoClose: 20000
+        });
     });
 }
 
 const addNewComment = async (username, description, postid, files) => {
     if (description === "") {
-        alert('Empty description')
+        toast.error('Empty description', {
+            position: "bottom-right",
+            autoClose: 20000
+        });
         return
     }
     await axios({
@@ -66,14 +89,23 @@ const addNewComment = async (username, description, postid, files) => {
         }
     }).then(result => {
         if (result.data) {
-            alert('Successfully to add a new comment')
+            toast.info('Successfully to add a new comment', {
+                position: "bottom-right",
+                autoClose: 20000
+            });
             window.location.reload();
         }
         else {
-            alert('Failed to add a new comment')
+            toast.error('Failed to add a new comment', {
+                position: "bottom-right",
+                autoClose: 20000
+            });
         }
     }).catch(err => {
-        alert(err);
+        toast.error(`${err}`, {
+            position: "bottom-right",
+            autoClose: 20000
+        });
     });
 }
 
@@ -84,6 +116,7 @@ const Blog = () => {
     }, []);
     return (
         <div>
+            <ToastContainer />
             <br />
             {   
                 document.cookie.includes('username') ?

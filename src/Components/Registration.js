@@ -5,6 +5,8 @@ import { validatePassword, validateUsername, validatePhone, validateEmail } from
 import config from './../config.json'
 import history from './History';
 import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const handleRegister = async (username, password, confirmPassword, email, phone) => {
     const validateUser = validateUsername(username)
@@ -12,23 +14,38 @@ const handleRegister = async (username, password, confirmPassword, email, phone)
     const validateEm = validateEmail(email)
     const validatePh = validatePhone(phone)
     if(validateUser !== 'ok'){
-        alert(validateUser)
+        toast.error(`${validateUser}`, {
+            position: "bottom-right",
+            autoClose: 20000
+        });
         return
     }
     if(validatePass !== 'ok'){
-        alert(validatePass)
+        toast.error(`${validatePass}`, {
+            position: "bottom-right",
+            autoClose: 20000
+        });
         return
     }
     if(validateEm !== 'ok'){
-        alert(validateEm)
+        toast.error(`${validateEm}`, {
+            position: "bottom-right",
+            autoClose: 20000
+        });
         return
     }
     if(validatePh !== 'ok'){
-        alert(validatePh)
+        toast.error(`${validatePh}`, {
+            position: "bottom-right",
+            autoClose: 20000
+        });
         return
     }
     if(confirmPassword !== password){
-        alert('passwords are not identical')
+        toast.error('passwords are not identical', {
+            position: "bottom-right",
+            autoClose: 20000
+        });
         return
     }
     await axios({
@@ -42,15 +59,24 @@ const handleRegister = async (username, password, confirmPassword, email, phone)
         } 
     }).then(result => {
         if (result.data) {
-            alert('Successfully Register')
+            toast.info('Successfully Register', {
+                position: "bottom-right",
+                autoClose: 20000
+            });
             history.push('/')
             window.location.reload()
         }
         else {
-            alert('Failed Register')
+            toast.error('Failed Register', {
+                position: "bottom-right",
+                autoClose: 20000
+            });
         }
     }).catch(err => {
-        alert(err);
+        toast.erorr(`${err}`, {
+            position: "bottom-right",
+            autoClose: 20000
+        });
     });
 }
 
@@ -62,6 +88,7 @@ const Registration = () => {
     const [email, setEmail] = useState("")
     return (
         <div className="login_page">
+            <ToastContainer />
             <br/>
             <LogoImg2 />
             <br/>

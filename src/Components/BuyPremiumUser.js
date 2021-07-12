@@ -3,6 +3,8 @@ import { validatePINcode } from './utils'
 import { DirectButton, DirectInput, DirectDiv, DivTitles } from './index'
 import config from './../config.json'
 import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const checkMyPincode = async (pin, user) => {
     return await axios({
@@ -17,7 +19,10 @@ const checkMyPincode = async (pin, user) => {
             return result.data
         }
     }).catch(err => {
-        alert(err);
+        toast.error(`${err}`, {
+            position: "bottom-right",
+            autoClose: 20000
+        });
     });
 }
 
@@ -26,15 +31,24 @@ const handlePinCode = async (pincode) => {
         const username = document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(','))
         if (await checkMyPincode(pincode, username)) {
             document.cookie = `username: ${username}, premium: yesPremium;`
-            alert("Successful PIN code")
+            toast.info('Successful PIN code', {
+                position: "bottom-right",
+                autoClose: 20000
+            });
             window.location.reload();
         }
         else {
-            alert("Wrong PIN code")
+            toast.error('Wrong PIN code', {
+                position: "bottom-right",
+                autoClose: 20000
+            });
         }
     }
     else {
-        alert("Wrong PIN code")
+        toast.error('Wrong PIN code', {
+            position: "bottom-right",
+            autoClose: 20000
+        });
     }
 }
 
@@ -43,6 +57,7 @@ const BuyPremiumUser = () => {
 
     return (
         <div style={{ textAlign: "center" }}>
+            <ToastContainer />
             <DivTitles>
                 <h1>ARE YOU PREMIUM USER ?!</h1>
                 <h2 style={{ fontFamily: "Comic Sans MS" }}>If not so this service costs 100₪ (NIS) per month, can be paid (bit, pay, paybox) through the site owner (details in About)</h2>
