@@ -9,7 +9,7 @@ import { notify } from './../LandPage';
 
 
 const sendEmail = (msg) => {
-    emailjs.send('service_lpbnhwu', 'template_wrk83k7', msg, 'user_E410jnUupeNSDYfZ0Wlhi')
+    emailjs.send('service_ujkeq1m', 'template_wrk83k7', msg, 'user_E410jnUupeNSDYfZ0Wlhi')
         .then((result) => {
             notify(result)
         }, (error) => {
@@ -18,7 +18,7 @@ const sendEmail = (msg) => {
 }
 
 
-const addNewPost = async (username, title, description, files) => {
+const addNewPost = async (username, title, description, files, resetFields) => {
     if (title === "" || description === "") {
         notify('Empty title or description')
         return
@@ -41,9 +41,9 @@ const addNewPost = async (username, title, description, files) => {
                 title: title,
                 message: description
             };
+            resetFields()
             sendEmail(messageParams)
-            notify('Successfully to add a new direct post')
-            window.location.reload();
+            notify('successful to add a new direct post')
         }
         else {
             notify('Failed to add a new direct post')
@@ -53,7 +53,7 @@ const addNewPost = async (username, title, description, files) => {
     });
 }
 
-const addNewComment = async (username, description, postid, files) => {
+const addNewComment = async (username, description, postid, files, resetFields) => {
     if (description === "") {
         notify('Empty description')
         return
@@ -70,8 +70,8 @@ const addNewComment = async (username, description, postid, files) => {
         }
     }).then(result => {
         if (result.data) {
-            notify('Successfully to add a new direct comment')
-            window.location.reload();
+            resetFields()
+            notify('successful to add a new direct comment')
         }
         else {
             notify('Failed to add a new direct comment')
@@ -118,16 +118,16 @@ const getAdminPosts = async () => {
 
 const PremiumPage = () => {
     const [premium, setPremium] = useState(document.cookie.includes("yesPremium"));
-    const [myData, setMyData] = useState([])
+    const [data, setData] = useState([])
     const admin = document.cookie.includes("orelkakon")
     const user = document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(','));
     useEffect(() => {
-        admin ? getAdminPosts().then(result => result && setMyData(result.reverse())) :
-            getMyPosts(user).then(result => result && setMyData(result.reverse()))
-    }, [admin, user]);
+        admin ? getAdminPosts().then(result => result && setData(result.reverse())) :
+            getMyPosts(user).then(result => result && setData(result.reverse()))
+    }, [admin, user, data]);
     return (
         <div>
-            
+
             <br />
             {
                 (premium || admin) ?
@@ -137,9 +137,9 @@ const PremiumPage = () => {
                         <AddPost message={"Send"} h1={"Ask Direct Question"} addDPost={addNewPost} kind='direct' />
                         <br />
                         {
-                            myData && myData.map(post => {
+                            data && data.map(post => {
                                 const { name, title, content, date, files, postid, comments } = post
-                                return (<><Post name={name} title={title} content={content} date={date} files={files} postid={postid} comments={comments} addDComment={addNewComment} kind='direct' /> <br /></>)
+                                return (<><Post name={name} title={title} content={content} date={date} files={files} postid={postid} comments={comments} addDComment={addNewComment} kind='direct' setData={setData} data={data}/> <br /></>)
                             })
                         }
                         <br />

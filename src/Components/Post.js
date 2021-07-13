@@ -7,7 +7,7 @@ import axios from 'axios'
 import './images.css'
 import { notify } from './../LandPage';
 
-const deletePost = async (postid, kind) => {
+const deletePost = async (postid, kind, setData, data) => {
     await axios({
         method: 'post',
         url: `${config.protocol}://${config.host}:${config.port}${kind === 'blog' ? config.urls.deletePost : config.urls.deletePostD}`,
@@ -15,15 +15,14 @@ const deletePost = async (postid, kind) => {
             postid: postid,
         }
     })
-  await notify(`successful delete post`)
-    window.location.reload()
+    await notify(`successful delete post`)
+    setData(data)
 }
 
 
 const Post = (props) => {
     return (
-        <PostDiv>
-            
+        <PostDiv>            
             <PostUser>{props.name}</PostUser>
             <PostDate>{props.date}</PostDate>
             <br /><br />
@@ -38,7 +37,7 @@ const Post = (props) => {
                 <br /><br />
                 {
                     props.comments.map(comment => {
-                        return (<Comment comment={comment} kind={props.kind}/>)
+                        return (<Comment comment={comment} kind={props.kind} setData={props.setData} data={props.data}/>)
                     })
                 }
                 <AddComment addComment={props.addDComment} addAcomment={props.addComment} postid={props.postid} kind={props.kind}>
@@ -46,7 +45,7 @@ const Post = (props) => {
 
             </CommentsArea>
             {
-                (document.cookie.includes(` ${props.name},`) || document.cookie.includes(` orelkakon,`)) && <DeletePost delete={deletePost} postid={props.postid} kind={props.kind}/>
+                (document.cookie.includes(` ${props.name},`) || document.cookie.includes(` orelkakon,`)) && <DeletePost delete={deletePost} postid={props.postid} kind={props.kind} setData={props.setData} data={props.data}/>
             }
 
         </PostDiv>

@@ -5,7 +5,7 @@ import config from './../config.json'
 import axios from 'axios'
 import { notify } from './../LandPage';
 
-const deleteComment = async (commentid, kind) => {
+const deleteComment = async (commentid, kind, setData, data) => {
     await axios({
         method: 'post',
         url: `${config.protocol}://${config.host}:${config.port}${kind === 'blog' ? config.urls.deleteComment : config.urls.deleteCommentD}`,
@@ -13,8 +13,8 @@ const deleteComment = async (commentid, kind) => {
             commentid: commentid,
         }
     })
-    await notify(`successful delete post`)
-    window.location.reload()
+    await notify(`successful delete comment`)
+    setData(data)
 }
 
 const Comment = (props) => {
@@ -30,7 +30,7 @@ const Comment = (props) => {
                 props.comment.files && props.comment.files[0] !== "null" && (<img src={props.comment.files} alt="not found 2" id="imgComment" className="img" />)
             }
             {
-                (document.cookie.includes(` ${props.comment.name},`) || document.cookie.includes(` orelkakon,`)) && <DeleteComment deleteComment={deleteComment} commentid={props.comment.commentid} kind={props.kind} />
+                (document.cookie.includes(` ${props.comment.name},`) || document.cookie.includes(` orelkakon,`)) && <DeleteComment deleteComment={deleteComment} commentid={props.comment.commentid} kind={props.kind} setData={props.setData} data={props.data}/>
             }
         </CommentBorder>
     )

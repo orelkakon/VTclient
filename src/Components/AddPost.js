@@ -18,18 +18,26 @@ const AddPost = (props) => {
         }
         reader.readAsDataURL(e.target.files[0])
     };
+
+    const resetFields = () => {
+        document.getElementById("addposttitle").value = "";
+        document.getElementById("addpostdesc").value = "";
+        document.getElementById("addposttitle").placeholder = "Insert title...";
+        document.getElementById("addpostdesc").placeholder = "Insert description...";
+        document.getElementById("upfile").style.backgroundColor = "transparent";
+    }
     return (
         <AddPostDiv>
             <h1>{props.h1}</h1>
-            <AddPostTitle placeholder="Insert title..." onChange={e => setTitle(e.target.value)}></AddPostTitle>
+            <AddPostTitle id="addposttitle" placeholder="Insert title..." onChange={e => setTitle(e.target.value)}></AddPostTitle>
             <br />
-            <AddPostDesc placeholder="Insert description..." onChange={e => setDescription(e.target.value)}></AddPostDesc>
+            <AddPostDesc id="addpostdesc" placeholder="Insert description..." onChange={e => setDescription(e.target.value)}></AddPostDesc>
             <br />
-            <label className='uploadButton' style={file ? {backgroundColor: "green"} : {backgroundColor: "transparent"}}><img src = {icon} alt = "GitHub" style = {{width:"30px",height:"30px"}}/>
+            <label id="upfile" className='uploadButton' style={file ? {backgroundColor: "green"} : {backgroundColor: "transparent"}}><img src = {icon} alt = "GitHub" style = {{width:"30px",height:"30px"}}/>
             <input onChange={imageHandler} accept="image/*" type="file" style={{display:'none'}}/> </label>
             <ButtonAddPost onClick={() => props.kind === 'blog' ?
-                props.addpost(document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(',')), title.replaceAll("'",""), description.replaceAll("'",""), file) :
-                props.addDPost(document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(',')), title.replaceAll("'",""), description.replaceAll("'",""), file)
+                props.addpost(document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(',')), title.replaceAll("'",""), description.replaceAll("'",""), file, resetFields) :
+                props.addDPost(document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(',')), title.replaceAll("'",""), description.replaceAll("'",""), file, resetFields)
             }>{props.message}</ButtonAddPost>
         </AddPostDiv>
     )

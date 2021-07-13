@@ -4,7 +4,6 @@ import Footer from './../Components/Footer';
 import { validateEmptyFields } from './utils'
 import config from './../config.json'
 import axios from 'axios'
-import history from './History';
 import { notify } from './../LandPage';
 
 
@@ -29,7 +28,7 @@ const getMyPincode = (user) => {
     })
 }
 
-const handleLogin = async(username, password) => {
+const handleLogin = async(username, password, setLogged) => {
     if (validateEmptyFields(username) || validateEmptyFields(password)) {
         await notify("Empty field!")
         return;
@@ -41,15 +40,13 @@ const handleLogin = async(username, password) => {
         const isPremiumIn = response[1];
         if (isLoggedIn.data && isPremiumIn.data !== "") {
             document.cookie = `username: ${username}, premium: yesPremium;`
-            notify('Successfully Login')
-            history.push('/AboutAndContact')
-            window.location.reload()
+            notify('successful Login')
+            setLogged(true)
         }
         else if (isLoggedIn.data) {
             document.cookie = `username: ${username},`
-            notify('Successfully Login')
-            history.push('/AboutAndContact')
-            window.location.reload()
+            notify('successful Login')
+            setLogged(true)
         }
         else {
             notify('Failed Login')
@@ -57,28 +54,28 @@ const handleLogin = async(username, password) => {
     }));
 }
 
-const handleLogout = (username) => {
+const handleLogout = async (username, setLogged) => {
     notify(`Bye Bye ${username}`)
     document.cookie = `username: ${username}; expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
+    setLogged(false)
 }
 
-const LoginPage = () => {
+const LoginPage = (props) => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     return (
-        <div className="login_page">
-            
+        <div className="login_page">      
             <LogoImg />
             {
-                document.cookie.includes("username") ?
+                props.logged ?
                     <LogoutForm>
-                        <LogoutButton onClick={() => handleLogout(document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(',')))}>Logout</LogoutButton>
+                        <LogoutButton onClick={() => handleLogout(document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(',')), props.setLogged)}>Logout</LogoutButton>
                     </LogoutForm>
                     :
                     <LoginForm>
                         <InputField placeholder="Username" autocomplete="off" id="username" name="username" onChange={e => setUsername(e.target.value)} /><br />
                         <InputField type="password" placeholder="Password" autocomplete="off" id="password" name="password" onChange={e => setPassword(e.target.value)} /><br /> <br />
-                        <LoginButton onClick={() => handleLogin(username, password)}>Sign In</LoginButton>
+                        <LoginButton onClick={() => handleLogin(username, password, props.setLogged)}>Sign In</LoginButton>
                     </LoginForm>
             }
             <Footer />

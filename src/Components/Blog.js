@@ -6,7 +6,7 @@ import NeedRegisterUser from './NeedRegisterUser'
 import { useState, useEffect } from 'react'
 import { notify } from './../LandPage';
 
-const addNewPost = async (username, title, description, files) => {
+const addNewPost = async (username, title, description, files, resetFields) => {
     if (title === "" || description === "") {
         notify('Empty title or description')
         return
@@ -23,8 +23,8 @@ const addNewPost = async (username, title, description, files) => {
         }
     }).then(result => {
         if (result.data) {
-            notify('Successfully to add a new post')
-            window.location.reload();
+            resetFields()
+            notify('successful to add a new post')
         }
         else {
             notify('Failed to add a new post')
@@ -50,9 +50,9 @@ const getPosts = async () => {
     });
 }
 
-const addNewComment = async (username, description, postid, files) => {
+const addNewComment = async (username, description, postid, files, resetFields) => {
     if (description === "") {
-      await notify('Empty description')
+        await notify('Empty description')
         return
     }
     await axios({
@@ -67,8 +67,8 @@ const addNewComment = async (username, description, postid, files) => {
         }
     }).then(result => {
         if (result.data) {
-            notify('Successfully to add a new comment')
-            window.location.reload();
+            resetFields()
+            notify('successful to add a new comment')
         }
         else {
             notify('Failed to add a new comment')
@@ -82,10 +82,9 @@ const Blog = () => {
     const [data, setData] = useState([])
     useEffect(() => {
         getPosts().then(result => result && setData(result.reverse()))
-    }, []);
+    }, [data]);
     return (
         <div>
-            
             <br />
             {
                 document.cookie.includes('username') ?
@@ -98,7 +97,7 @@ const Blog = () => {
                         {
                             data && data.map(post => {
                                 const { name, title, content, date, files, comments, postid } = post
-                                return (<><Post name={name} title={title} content={content} date={date} files={files} comments={comments} postid={postid} addComment={addNewComment} kind='blog' /> <br /></>)
+                                return (<><Post name={name} title={title} content={content} date={date} files={files} comments={comments} postid={postid} addComment={addNewComment} kind='blog' setData={setData} data={data}/> <br /></>)
                             })
                         }
                         <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

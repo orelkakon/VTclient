@@ -23,13 +23,13 @@ const checkMyPincode = async (pin, user) => {
     });
 }
 
-const handlePinCode = async (pincode) => {
+const handlePinCode = async (pincode, setPremium) => {
     if (validatePINcode(pincode)) {
         const username = document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(','))
         if (await checkMyPincode(pincode, username)) {
             document.cookie = `username: ${username}, premium: yesPremium;`
             notify('Successful PIN code')
-            window.location.reload();
+            setPremium(true);
         }
         else {
             notify('Wrong PIN code')
@@ -40,7 +40,7 @@ const handlePinCode = async (pincode) => {
     }
 }
 
-const BuyPremiumUser = () => {
+const BuyPremiumUser = (props) => {
     const [pinCode, setPinCode] = useState("")
 
     return (
@@ -55,7 +55,7 @@ const BuyPremiumUser = () => {
             <DirectDiv>
                 <DirectInput placeholder="PIN code" onChange={e => setPinCode(e.target.value)}></DirectInput>
                 <br />
-                <DirectButton onClick={() => handlePinCode(pinCode)}>Submit</DirectButton>
+                <DirectButton onClick={() => handlePinCode(pinCode, props.setPremium)}>Submit</DirectButton>
             </DirectDiv>
             <br /><br />
             <br /><br />

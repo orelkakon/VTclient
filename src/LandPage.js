@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Registration from './Components/Registration'
 import AboutAndContact from './Components/AboutAndContact'
@@ -12,27 +12,30 @@ import './LandPage.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+const properties = {
+  position: "bottom-right",
+  autoClose: 2500,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined
+}
+
 export const notify = async (msg) => {
-  await toast.dark(msg, {
-    position: "bottom-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined
-  })
+  await toast.dark(msg, properties)
 }
 
 const LandPage = () => {
+  const [logged, setLogged] = useState(document.cookie.includes('username'))
   return (
     <div className="landpage">
       <ToastContainer />
       <BrowserRouter history={history}>
-        <Header />
+        <Header logged={logged} />
         <Route path="/" exact strict render={
           () => (
-            <LoginPage />
+            <LoginPage setLogged={setLogged} logged={logged}/>
           )
         } />
         <Route path="/Registration" exact strict render={

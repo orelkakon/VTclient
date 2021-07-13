@@ -3,7 +3,6 @@ import { LogoImg2, LoginForm, InputField, LoginButton } from './index'
 import Footer from './../Components/Footer';
 import { validatePassword, validateUsername, validatePhone, validateEmail } from './utils'
 import config from './../config.json'
-import history from './History';
 import axios from 'axios'
 import { notify } from './../LandPage';
 
@@ -45,9 +44,7 @@ const handleRegister = async (username, password, confirmPassword, email, phone)
         }
     }).then(result => {
         if (result.data) {
-            notify('Successfully Register')
-            history.push('/')
-            window.location.reload()
+            notify('successful Register')
         }
         else {
             notify('Failed Register')

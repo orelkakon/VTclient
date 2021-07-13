@@ -60,11 +60,11 @@ export const LogoImg2 = styled.div`
     zoom: 110%
 `;
 
-export const LoginForm = styled.form`
+export const LoginForm = styled.div`
     text-align: center;
 `;
 
-export const LogoutForm = styled.form`
+export const LogoutForm = styled.div`
     text-align: center;
 `;
 
