@@ -90,7 +90,7 @@ const Blog = (props) => {
                 document.cookie.includes('username') ?
                     <>
                         <br />
-                        <h1 style={{ textAlign: 'center' }}>{props.english ? 'Global Questions' : 'בלוג השאלות הגלובלי'}</h1>
+                        <h1 style={{ textAlign: 'center' }}>{props.english ? 'Global Questions' : 'בלוג השאלות החופשי'}</h1>
                         <br />
                         <AddPost english={props.english} message={props.english ? "Publish" : "פרסם"} h1={props.english ? "Ask Global Question" : "שאל שאלה חדשה"} addpost={addNewPost} kind='blog' />
                         <br />

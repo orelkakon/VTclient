@@ -5,7 +5,7 @@ import joinUs from './../Assets/joinus.png';
 // Header
 export const HeaderDiv = styled.div`
     display: flex;
-    border: 2px solid black;
+    border: 1.5px solid black;
     border-radius: 50px 0px 50px 0px;
     box-shadow: 3px 6px black;
     justify-content: center;
@@ -48,7 +48,7 @@ export const LogoImg = styled.div`
     height: 200px;
     width: 200px;
     margin: auto;
-    zoom: 130%
+    zoom: 125%
 `;
 
 export const LogoImg2 = styled.div`

@@ -33,44 +33,42 @@ const LandPage = () => {
     <div className="landpage">
       <ToastContainer />
       <BrowserRouter history={history}>
-        <input type="checkbox" class="toggle" onClick={() => setEnglish(!english)}/>
-          <div class="switch">
-            <div class="inner">
-              <div class="disc"></div>
-            </div>
-          </div>
-          <br/>
-          <Header logged={logged} english={english}/>
-          <Route path="/" exact strict render={
-            () => (
-              <LoginPage setLogged={setLogged} logged={logged} english={english}/>
-            ) 
-          } />
-          <Route path="/Registration" exact strict render={
-            () => (
-              <Registration english={english}/>
-            )
-          } />
-          <Route path="/AboutAndContact" exact strict render={
-            () => (
-              <AboutAndContact english={english}/>
-            )
-          } />
-          <Route path="/Blog" exact strict render={
-            () => (
-              <Blog english={english}/>
-            )
-          } />
-          <Route path="/PremiumPage" exact strict render={
-            () => (
-              <PremiumPage english={english}/>
-            )
-          } />
-          <Route path="/Links" exact strict render={
-            () => (
-              <Links english={english}/>
-            )
-          } />
+        <div id="language" style={{display:"flex", justifyContent:"center"}}>
+          <label class="switch"><input type="checkbox" onClick={() => setEnglish(!english)} />    <div class="slider round"></div>
+          </label>
+        </div>
+        <br />
+        <Header logged={logged} english={english} />
+        <Route path="/" exact strict render={
+          () => (
+            <LoginPage setLogged={setLogged} logged={logged} english={english} />
+          )
+        } />
+        <Route path="/Registration" exact strict render={
+          () => (
+            <Registration english={english} />
+          )
+        } />
+        <Route path="/AboutAndContact" exact strict render={
+          () => (
+            <AboutAndContact english={english} />
+          )
+        } />
+        <Route path="/Blog" exact strict render={
+          () => (
+            <Blog english={english} />
+          )
+        } />
+        <Route path="/PremiumPage" exact strict render={
+          () => (
+            <PremiumPage english={english} />
+          )
+        } />
+        <Route path="/Links" exact strict render={
+          () => (
+            <Links english={english} />
+          )
+        } />
       </BrowserRouter>
     </div>
   )

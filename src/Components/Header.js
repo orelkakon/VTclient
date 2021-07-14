@@ -28,12 +28,12 @@ const Header = (props) => {
                     <HeaderListElement>
                         <NavLink to="/PremiumPage" style={{ textDecoration: 'none', color: 'black', textShadow: '2px 2px gray' }} activeClassName="nl" exact activeStyle={
                             { textDecoration: 'underline' }
-                        }>{props.english ? 'Direct' : 'פרטי'}</NavLink>
+                        }>{props.english ? 'Direct' : 'דיירקט'}</NavLink>
                     </HeaderListElement>
                     <HeaderListElement>
                         <NavLink to="/Blog" style={{ textDecoration: 'none', color: 'black', textShadow: '2px 2px gray' }} activeClassName="nl" exact activeStyle={
                             { textDecoration: 'underline' }
-                        }>{props.english ? 'Explore' : 'גלובלי'}</NavLink>
+                        }>{props.english ? 'Explore' : 'הבלוג'}</NavLink>
                     </HeaderListElement>
                     <HeaderListElement>
                         <NavLink to="/Links" style={{ textDecoration: 'none', color: 'black', textShadow: '2px 2px gray' }} activeClassName="nl" exact activeStyle={
