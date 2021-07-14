@@ -27,42 +27,50 @@ export const notify = async (msg) => {
 }
 
 const LandPage = () => {
+  const [english, setEnglish] = useState(true)
   const [logged, setLogged] = useState(document.cookie.includes('username'))
   return (
     <div className="landpage">
       <ToastContainer />
       <BrowserRouter history={history}>
-        <Header logged={logged} />
-        <Route path="/" exact strict render={
-          () => (
-            <LoginPage setLogged={setLogged} logged={logged}/>
-          )
-        } />
-        <Route path="/Registration" exact strict render={
-          () => (
-            <Registration />
-          )
-        } />
-        <Route path="/AboutAndContact" exact strict render={
-          () => (
-            <AboutAndContact />
-          )
-        } />
-        <Route path="/Blog" exact strict render={
-          () => (
-            <Blog />
-          )
-        } />
-        <Route path="/PremiumPage" exact strict render={
-          () => (
-            <PremiumPage />
-          )
-        } />
-        <Route path="/Links" exact strict render={
-          () => (
-            <Links />
-          )
-        } />
+        <input type="checkbox" class="toggle" onClick={() => setEnglish(!english)}/>
+          <div class="switch">
+            <div class="inner">
+              <div class="disc"></div>
+            </div>
+          </div>
+          <br/>
+          <Header logged={logged} english={english}/>
+          <Route path="/" exact strict render={
+            () => (
+              <LoginPage setLogged={setLogged} logged={logged} english={english}/>
+            ) 
+          } />
+          <Route path="/Registration" exact strict render={
+            () => (
+              <Registration english={english}/>
+            )
+          } />
+          <Route path="/AboutAndContact" exact strict render={
+            () => (
+              <AboutAndContact english={english}/>
+            )
+          } />
+          <Route path="/Blog" exact strict render={
+            () => (
+              <Blog english={english}/>
+            )
+          } />
+          <Route path="/PremiumPage" exact strict render={
+            () => (
+              <PremiumPage english={english}/>
+            )
+          } />
+          <Route path="/Links" exact strict render={
+            () => (
+              <Links english={english}/>
+            )
+          } />
       </BrowserRouter>
     </div>
   )

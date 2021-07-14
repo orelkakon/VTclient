@@ -10,35 +10,35 @@ const Header = (props) => {
                     <HeaderListElement>
                         <NavLink to="/" style={{ textDecoration: 'none', color: 'black', textShadow: '2px 2px gray' }} activeClassName="nl" exact activeStyle={
                             { textDecoration: 'underline' }
-                        }>{props.logged ? 'Logout' : 'Login'}</NavLink>
+                        }>{props.logged ? (props.english ? 'Logout' : 'התנתק') : (props.english ? 'Login' : 'התחבר')}</NavLink>
                     </HeaderListElement>
                     {
                         !props.logged &&
                         <HeaderListElement>
                             <NavLink to="/Registration" style={{ textDecoration: 'none', color: 'black', textShadow: '2px 2px gray' }} activeClassName="nl" exact activeStyle={
                                 { textDecoration: 'underline' }
-                            }>Register</NavLink>
+                            }>{props.english ? 'Register' : 'הירשם'}</NavLink>
                         </HeaderListElement>
                     }
                     <HeaderListElement>
                         <NavLink to="/AboutAndContact" style={{ textDecoration: 'none', color: 'black', textShadow: '2px 2px gray' }} activeClassName="nl" exact activeStyle={
                             { textDecoration: 'underline' }
-                        }>About</NavLink>
+                        }>{props.english ? 'About' : 'אודות'}</NavLink>
                     </HeaderListElement>
                     <HeaderListElement>
                         <NavLink to="/PremiumPage" style={{ textDecoration: 'none', color: 'black', textShadow: '2px 2px gray' }} activeClassName="nl" exact activeStyle={
                             { textDecoration: 'underline' }
-                        }>Direct</NavLink>
+                        }>{props.english ? 'Direct' : 'פרטי'}</NavLink>
                     </HeaderListElement>
                     <HeaderListElement>
                         <NavLink to="/Blog" style={{ textDecoration: 'none', color: 'black', textShadow: '2px 2px gray' }} activeClassName="nl" exact activeStyle={
                             { textDecoration: 'underline' }
-                        }>Explore</NavLink>
+                        }>{props.english ? 'Explore' : 'גלובלי'}</NavLink>
                     </HeaderListElement>
                     <HeaderListElement>
                         <NavLink to="/Links" style={{ textDecoration: 'none', color: 'black', textShadow: '2px 2px gray' }} activeClassName="nl" exact activeStyle={
                             { textDecoration: 'underline' }
-                        }>Links</NavLink>
+                        }>{props.english ? 'Links' : 'קישורים'}</NavLink>
                     </HeaderListElement>
                 </HeaderList>
             </HeaderDiv>

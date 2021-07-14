@@ -5,7 +5,7 @@ import config from './../config.json'
 import axios from 'axios'
 import { notify } from './../LandPage';
 
-const deleteComment = async (commentid, kind, setData, data) => {
+const deleteComment = async (commentid, kind, setData, data, english) => {
     await axios({
         method: 'post',
         url: `${config.protocol}://${config.host}:${config.port}${kind === 'blog' ? config.urls.deleteComment : config.urls.deleteCommentD}`,
@@ -13,14 +13,13 @@ const deleteComment = async (commentid, kind, setData, data) => {
             commentid: commentid,
         }
     })
-    await notify(`successful delete comment`)
+    await notify(english ? `successful delete comment`: "התגובה נמחקה בהצלחה")
     setData(data)
 }
 
 const Comment = (props) => {
     return (
         <CommentBorder>
-
             <NameAndDateComment>{`${props.comment.name} - ${props.comment.date}`}</NameAndDateComment>
             <br />
             <br />
@@ -30,7 +29,7 @@ const Comment = (props) => {
                 props.comment.files && props.comment.files[0] !== "null" && (<img src={props.comment.files} alt="not found 2" id="imgComment" className="img" />)
             }
             {
-                (document.cookie.includes(` ${props.comment.name},`) || document.cookie.includes(` orelkakon,`)) && <DeleteComment deleteComment={deleteComment} commentid={props.comment.commentid} kind={props.kind} setData={props.setData} data={props.data}/>
+                (document.cookie.includes(` ${props.comment.name},`) || document.cookie.includes(` orelkakon,`)) && <DeleteComment english={props.english} deleteComment={deleteComment} commentid={props.comment.commentid} kind={props.kind} setData={props.setData} data={props.data}/>
             }
         </CommentBorder>
     )

@@ -1,39 +1,39 @@
-export const validatePassword = (password) => {
+export const validatePassword = (password, english) => {
     const letterNumber = /^[0-9a-zA-Z]+$/;
     if (password.length < 8)
-        return 'password must be at least 8 chars';
+        return english ? 'password must be at least 8 chars' : "סיסמה חייבת להכיל לפחות 8 תווים";
     else if (!password.match(letterNumber)) {
-        return 'password must includes just letter and numbers';
+        return english ? 'password must includes just letter and numbers': "סיסמה חייבת להכיל רק מספרים ואותיות";
     }
     else
         return 'ok';
 }
 
-export const validateUsername = (username) => {
+export const validateUsername = (username, english) => {
     const letterNumber = /^[0-9a-zA-Z_]+$/;
     if (username.length < 3)
-        return 'username must be at least 4 chars';
+        return english ? 'username must be at least 4 chars' : "שם משתמש חייב להכיל לפחות 4 תווים";
     else if (!username.match(letterNumber)) {
-        return 'username must includes just letter and numbers';
+        return english ? 'username must includes just letter and numbers': "שם משתמש חייב להכיל רק מספרים ואותיות";
     }
     else
         return 'ok';
 }
 
-export const validatePhone = (phone) => {
+export const validatePhone = (phone, english) => {
     const numbers = /^[0-9]+$/;
     if (phone.length !== 10)
-        return 'phone number must be exactly 10 digits';
+        return english ? 'phone number must be exactly 10 digits': "מספר פלאפון חייב להכיל 10 ספרות בדיוק";
     else if (!phone.match(numbers)) {
-        return 'phone number must includes just digits';
+        return english ? 'phone number must includes just digits': "מספר פלאפון חייב להכיל רק ספרות";
     }
     else
         return 'ok';
 }
 
-export const validateEmail = (email) => {
+export const validateEmail = (email , english) => {
     if (!email.includes('@') || !email.includes('.'))
-        return 'illegal email';
+        return english ? 'illegal email' : "דואר אלקטרוני לא תקין";
     else
         return 'ok';
 }

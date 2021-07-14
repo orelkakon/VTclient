@@ -6,9 +6,9 @@ import NeedRegisterUser from './NeedRegisterUser'
 import { useState, useEffect } from 'react'
 import { notify } from './../LandPage';
 
-const addNewPost = async (username, title, description, files, resetFields) => {
+const addNewPost = async (username, title, description, files, resetFields, english) => {
     if (title === "" || description === "") {
-        notify('Empty title or description')
+        notify(english ? 'Empty title or description': "ישנו שדה ריק")
         return
     }
     await axios({
@@ -24,17 +24,17 @@ const addNewPost = async (username, title, description, files, resetFields) => {
     }).then(result => {
         if (result.data) {
             resetFields()
-            notify('successful to add a new post')
+            notify(english ? 'successful to add a new post': "העלאת פוסט חדש בוצעה בהצלחה")
         }
         else {
-            notify('Failed to add a new post')
+            notify(english ? 'Failed to add a new post' : "העלאת פוסט חדש נכשלה")
         }
     }).catch(err => {
         notify(err)
     });
 }
 
-const getPosts = async () => {
+const getPosts = async (english) => {
     return await axios({
         method: 'get',
         url: `${config.protocol}://${config.host}:${config.port}${config.urls.getPosts}`
@@ -43,16 +43,16 @@ const getPosts = async () => {
             return result.data
         }
         else {
-            notify('Failed to load posts. please refresh')
+            notify(english ? 'Failed to load posts. please refresh': "טעינת פוסטים נכשלה, אנא רענן")
         }
     }).catch(err => {
         notify(err)
     });
 }
 
-const addNewComment = async (username, description, postid, files, resetFields) => {
+const addNewComment = async (username, description, postid, files, resetFields, english) => {
     if (description === "") {
-        await notify('Empty description')
+        await notify(english ? 'Empty description': "שדה תוכן ריק")
         return
     }
     await axios({
@@ -68,17 +68,17 @@ const addNewComment = async (username, description, postid, files, resetFields) 
     }).then(result => {
         if (result.data) {
             resetFields()
-            notify('successful to add a new comment')
+            notify(english ? 'successful to add a new comment': "הוספת תגובה חדשה בוצעה בהצלחה")
         }
         else {
-            notify('Failed to add a new comment')
+            notify(english ? 'Failed to add a new comment': "הוספת תגובה חדשה נכשלה")
         }
     }).catch(err => {
         notify(err)
     });
 }
 
-const Blog = () => {
+const Blog = (props) => {
     const [data, setData] = useState([])
     useEffect(() => {
         getPosts().then(result => result && setData(result.reverse()))
@@ -90,19 +90,19 @@ const Blog = () => {
                 document.cookie.includes('username') ?
                     <>
                         <br />
-                        <h1 style={{ textAlign: 'center' }}>Global Questions</h1>
+                        <h1 style={{ textAlign: 'center' }}>{props.english ? 'Global Questions' : 'בלוג השאלות הגלובלי'}</h1>
                         <br />
-                        <AddPost message={"Publish"} h1={"Ask Global Question"} addpost={addNewPost} kind='blog' />
+                        <AddPost english={props.english} message={props.english ? "Publish" : "פרסם"} h1={props.english ? "Ask Global Question" : "שאל שאלה חדשה"} addpost={addNewPost} kind='blog' />
                         <br />
                         {
                             data && data.map(post => {
                                 const { name, title, content, date, files, comments, postid } = post
-                                return (<><Post name={name} title={title} content={content} date={date} files={files} comments={comments} postid={postid} addComment={addNewComment} kind='blog' setData={setData} data={data}/> <br /></>)
+                                return (<><Post english={props.english} name={name} title={title} content={content} date={date} files={files} comments={comments} postid={postid} addComment={addNewComment} kind='blog' setData={setData} data={data}/> <br /></>)
                             })
                         }
                         <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                     </>
-                    : <NeedRegisterUser />
+                    : <NeedRegisterUser english={props.english}/>
             }
         </div>
     )

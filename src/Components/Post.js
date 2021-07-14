@@ -7,7 +7,7 @@ import axios from 'axios'
 import './images.css'
 import { notify } from './../LandPage';
 
-const deletePost = async (postid, kind, setData, data) => {
+const deletePost = async (postid, kind, setData, data, english) => {
     await axios({
         method: 'post',
         url: `${config.protocol}://${config.host}:${config.port}${kind === 'blog' ? config.urls.deletePost : config.urls.deletePostD}`,
@@ -15,7 +15,7 @@ const deletePost = async (postid, kind, setData, data) => {
             postid: postid,
         }
     })
-    await notify(`successful delete post`)
+    await notify(english ? `successful delete post`: "הפוסט נמחק בהצלחה")
     setData(data)
 }
 
@@ -33,19 +33,19 @@ const Post = (props) => {
                 props.files && props.files[0] !== "null" && (<img src={props.files} alt="not found" id="img" className="img" />)
             }
             <CommentsArea>
-                <CommentsTitle>Comments</CommentsTitle>
+                <CommentsTitle>{props.english ? 'Comments': 'תגובות'}</CommentsTitle>
                 <br /><br />
                 {
                     props.comments.map(comment => {
-                        return (<Comment comment={comment} kind={props.kind} setData={props.setData} data={props.data}/>)
+                        return (<Comment english={props.english} comment={comment} kind={props.kind} setData={props.setData} data={props.data}/>)
                     })
                 }
-                <AddComment addComment={props.addDComment} addAcomment={props.addComment} postid={props.postid} kind={props.kind}>
+                <AddComment props={props.english} addComment={props.addDComment} addAcomment={props.addComment} postid={props.postid} kind={props.kind}>
                 </AddComment>
 
             </CommentsArea>
             {
-                (document.cookie.includes(` ${props.name},`) || document.cookie.includes(` orelkakon,`)) && <DeletePost delete={deletePost} postid={props.postid} kind={props.kind} setData={props.setData} data={props.data}/>
+                (document.cookie.includes(` ${props.name},`) || document.cookie.includes(` orelkakon,`)) && <DeletePost english={props.english} delete={deletePost} postid={props.postid} kind={props.kind} setData={props.setData} data={props.data}/>
             }
 
         </PostDiv>

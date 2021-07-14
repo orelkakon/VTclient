@@ -28,9 +28,9 @@ const getMyPincode = (user) => {
     })
 }
 
-const handleLogin = async(username, password, setLogged) => {
+const handleLogin = async(username, password, setLogged, english) => {
     if (validateEmptyFields(username) || validateEmptyFields(password)) {
-        await notify("Empty field!")
+        await notify(english ? "Empty field!" : "ישנן שדות ריקים")
         return;
     }
     const login = isLogin(username, password)
@@ -40,22 +40,22 @@ const handleLogin = async(username, password, setLogged) => {
         const isPremiumIn = response[1];
         if (isLoggedIn.data && isPremiumIn.data !== "") {
             document.cookie = `username: ${username}, premium: yesPremium;`
-            notify('successful Login')
+            notify(english ? 'successful Login' : 'התחברות מוצלחת')
             setLogged(true)
         }
         else if (isLoggedIn.data) {
             document.cookie = `username: ${username},`
-            notify('successful Login')
+            notify(english ? 'successful Login' : 'התחברות מוצלחת')
             setLogged(true)
         }
         else {
-            notify('Failed Login')
+            notify(english ? 'Failed Login' : 'התחברות נכשלה')
         }
     }));
 }
 
-const handleLogout = async (username, setLogged) => {
-    notify(`Bye Bye ${username}`)
+const handleLogout = async (username, setLogged, english) => {
+    notify(english ? `Bye Bye ${username}` : `${username} ביי ביי`)
     document.cookie = `username: ${username}; expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
     setLogged(false)
 }
@@ -69,13 +69,13 @@ const LoginPage = (props) => {
             {
                 props.logged ?
                     <LogoutForm>
-                        <LogoutButton onClick={() => handleLogout(document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(',')), props.setLogged)}>Logout</LogoutButton>
+                        <LogoutButton onClick={() => handleLogout(document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(',')), props.setLogged, props.english)}>{props.english ? 'Logout': 'התנתק'}</LogoutButton>
                     </LogoutForm>
                     :
-                    <LoginForm>
-                        <InputField placeholder="Username" autocomplete="off" id="username" name="username" onChange={e => setUsername(e.target.value)} /><br />
-                        <InputField type="password" placeholder="Password" autocomplete="off" id="password" name="password" onChange={e => setPassword(e.target.value)} /><br /> <br />
-                        <LoginButton onClick={() => handleLogin(username, password, props.setLogged)}>Sign In</LoginButton>
+                    <LoginForm direction={props.english ? 'ltr': 'rtl'}>
+                        <InputField placeholder={props.english ? "Username": 'שם משתמש'} autocomplete="off" id="username" name="username" onChange={e => setUsername(e.target.value)} /><br />
+                        <InputField type="password" placeholder={props.english ? "Password": 'סיסמה'} autocomplete="off" id="password" name="password" onChange={e => setPassword(e.target.value)} /><br /> <br />
+                        <LoginButton onClick={() => handleLogin(username, password, props.setLogged, props.english)}>{props.english ? 'Sign In':'התחבר'}</LoginButton>
                     </LoginForm>
             }
             <Footer />

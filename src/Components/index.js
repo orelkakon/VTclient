@@ -48,20 +48,22 @@ export const LogoImg = styled.div`
     height: 200px;
     width: 200px;
     margin: auto;
-    zoom: 150%
+    zoom: 130%
 `;
 
 export const LogoImg2 = styled.div`
     background-image: url(${joinUs});
     background-repeat: no-repeat;
-    height: 138px;
+    height: 130px;
     width: 130px;
     margin: auto;
-    zoom: 110%
+    zoom: 80%
 `;
 
 export const LoginForm = styled.div`
     text-align: center;
+    direction: ${props => props.direction}
+
 `;
 
 export const LogoutForm = styled.div`
@@ -147,7 +149,7 @@ export const LogoutButton = styled.button`
 
 // About
 export const About = styled.text`
-    text-shadow: 2px 2px #0cc255;
+    text-shadow: 2px 2px gray;
 `;
 
 export const AboutContact = styled.div`

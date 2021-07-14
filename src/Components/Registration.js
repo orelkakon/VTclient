@@ -8,13 +8,13 @@ import { notify } from './../LandPage';
 
 
 
-const handleRegister = async (username, password, confirmPassword, email, phone) => {
-    const validateUser = validateUsername(username)
-    const validatePass = validatePassword(password)
-    const validateEm = validateEmail(email)
-    const validatePh = validatePhone(phone)
+const handleRegister = async (username, password, confirmPassword, email, phone, english) => {
+    const validateUser = validateUsername(username, english)
+    const validatePass = validatePassword(password, english)
+    const validateEm = validateEmail(email, english)
+    const validatePh = validatePhone(phone, english)
     if (validateUser !== 'ok') {
-        notify(validateUser)
+        notify(validateUser )
         return
     }
     if (validatePass !== 'ok') {
@@ -30,7 +30,7 @@ const handleRegister = async (username, password, confirmPassword, email, phone)
         return
     }
     if (confirmPassword !== password) {
-        notify('passwords are not identical')
+        notify(english ? 'passwords are not identical' : "סיסמאות אינן זהות")
         return
     }
     await axios({
@@ -44,17 +44,17 @@ const handleRegister = async (username, password, confirmPassword, email, phone)
         }
     }).then(result => {
         if (result.data) {
-            notify('successful Register')
+            notify(english ? 'successful Register' : "הרשמה בוצעה בהצלחה")
         }
         else {
-            notify('Failed Register')
+            notify(english ? 'Failed Register': "הרשמה נכשלה")
         }
     }).catch(err => {
         notify(err)
     });
 }
 
-const Registration = () => {
+const Registration = (props) => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
@@ -62,17 +62,16 @@ const Registration = () => {
     const [email, setEmail] = useState("")
     return (
         <div className="login_page">
-
             <br />
             <LogoImg2 />
-            <br />
-            <LoginForm>
-                <InputField placeholder="Username" autocomplete="off" id="username" name="username" onChange={e => setUsername(e.target.value)} /><br />
-                <InputField type="password" placeholder="Password" autocomplete="off" id="password" name="password" onChange={e => setPassword(e.target.value)} /><br />
-                <InputField type="password" placeholder="Confirm Password" autocomplete="off" id="cpassword" name="cpassword" onChange={e => setConfirmPassword(e.target.value)} /><br />
-                <InputField placeholder="Phone" autocomplete="off" id="phone" name="phone" onChange={e => setPhone(e.target.value)} /><br />
-                <InputField placeholder="Email" autocomplete="off" id="email" name="email" onChange={e => setEmail(e.target.value)} /><br /> <br />
-                <LoginButton onClick={() => handleRegister(username, password, confirmPassword, email, phone)}>Sign Up</LoginButton>
+            <br/>
+            <LoginForm direction={props.english ? 'ltr' : 'rtl'}>
+                <InputField placeholder={props.english ? "Username": 'שם משתמש'} autocomplete="off" id="username" name="username" onChange={e => setUsername(e.target.value)} /><br />
+                <InputField type="password" placeholder={props.english ? "Password": 'סיסמה'} autocomplete="off" id="password" name="password" onChange={e => setPassword(e.target.value)} /><br />
+                <InputField type="password" placeholder={props.english ? "Confirm Password":' אימות סיסמה'} autocomplete="off" id="cpassword" name="cpassword" onChange={e => setConfirmPassword(e.target.value)} /><br />
+                <InputField placeholder={props.english ? "Phone":'פלאפון'} autocomplete="off" id="phone" name="phone" onChange={e => setPhone(e.target.value)} /><br />
+                <InputField placeholder={props.english ? "Email":'דואר אלקטרוני'} autocomplete="off" id="email" name="email" onChange={e => setEmail(e.target.value)} /><br /> <br />
+                <LoginButton onClick={() => handleRegister(username, password, confirmPassword, email, phone, props.english)}>{props.english ? 'Sign Up' : 'הירשם'}</LoginButton>
             </LoginForm>
             <Footer />
         </div>
