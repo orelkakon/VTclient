@@ -1,5 +1,5 @@
 .landpage{
-    padding-top: 2%;
+    padding-top: 0.5%;
     background: url("./Assets/background.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -10,7 +10,11 @@
     position: fixed;
     overflow-y: auto;
     min-height: 100%;
+    display: block;
+
 }
+
+
 
 .language {
   position: absolute;

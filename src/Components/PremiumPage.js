@@ -131,7 +131,7 @@ const PremiumPage = (props) => {
             {
                 (premium || admin) ?
                     <>
-                        <h1 style={{ textAlign: 'center' }}>{admin ? (props.english ? 'Direct Questions for '+ user:  user + " שאלות אישיות עבור ") : (props.english ? 'Direct Questions Of ' + user : user + " שאלות אישיות של") }</h1>
+                        <h1 style={{ textAlign: 'center' }}>{admin ? (props.english ? 'Direct Questions for '+ user:  user + " שאלות אישיות עבור ") : (props.english ? 'Direct Questions Of ' + user : user + " שאלות אישיות") }</h1>
                         <br />
                         <AddPost english={props.english} message={props.english ? "Send" : "שלח"} h1={props.english ? "Ask Direct Question" : "שאל שאלה אישית"} addDPost={addNewPost} kind='direct' />
                         <br />

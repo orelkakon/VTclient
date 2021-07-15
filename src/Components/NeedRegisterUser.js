@@ -11,9 +11,9 @@ const NeedRegisterUser = (props) => {
                     </>
                     :
                     <>
-                        <h1>האם אתה משתמש רשום ?!</h1>
-                        <h2 style={{ fontFamily: "Comic Sans MS" }}>אם לא בבקשה <a href="./Registration" style={{ color: 'black' }}>הירשם</a> לאתר</h2>
-                        <h2 style={{ fontFamily: "Comic Sans MS" }}>אם כן בבקשה <a href="./" style={{ color: 'black' }}>התחבר</a> להמשך</h2>
+                        <h1>האם אתה משתמש מחובר ?!</h1>
+                        <h2 style={{ fontFamily: "Comic Sans MS" }}>אם לא, בבקשה <a href="./Registration" style={{ color: 'black' }}>הירשם</a> לאתר</h2>
+                        <h2 style={{ fontFamily: "Comic Sans MS" }}>אם כן, בבקשה <a href="./" style={{ color: 'black' }}>התחבר</a> להמשך</h2>
                     </>
                 }
             </DivTitles>

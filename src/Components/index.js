@@ -154,7 +154,7 @@ export const About = styled.text`
 
 export const AboutContact = styled.div`
     text-align: center;
-    font-size: 28px;
+    font-size: 30px;
     color: black;
     padding: 6px;
     font-family: Comic Sans MS;
@@ -513,6 +513,7 @@ export const DirectDiv = styled.div`
 export const DivTitles = styled.div`
     border: solid 2px black;
     border-radius: 20px 0px 20px 0px;
+    padding: 8px 8px 8px 8px;
     width: 90%;
     margin: auto;
     justify-content: center;

@@ -23,7 +23,7 @@ const checkMyPincode = async (pin, user) => {
     });
 }
 
-const handlePinCode = async (pincode, setPremium) => {
+const handlePinCode = async (pincode, setPremium, english) => {
     if (validatePINcode(pincode)) {
         const username = document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(','))
         if (await checkMyPincode(pincode, username)) {
@@ -55,9 +55,9 @@ const BuyPremiumUser = (props) => {
                     </>
                     :
                     <>
-                        <h1>האם אתה משתמש פרמיום ?!</h1>
-                        <h2 style={{ fontFamily: "Comic Sans MS" }}>אם לא אז ניתן לקנות את השירות ב100 ש"ח לחודש, ניתן לשלם (ביט, פאי, פאיבוקס) דרך הפרטים ליצירת קשר באודות</h2>
-                        <h2 style={{ fontFamily: "Comic Sans MS" }}>אם כן אז <a href="./" style={{ color: 'black' }}> התחבר</a> לאתר והזן את הקוד שקיבלת בפלאפון שלך לאחר ביצוע עסקת תשלום מוצלחת</h2>
+                        <h1>האם אתה משתמש פרימיום ?!</h1>
+                        <h2 style={{ fontFamily: "Comic Sans MS" }}>אם לא, אז ניתן לקנות את השירות ב-100 ש"ח לחודש, ניתן לשלם (ביט, פאי, פאיבוקס) דרך הפרטים ליצירת קשר שנמצאים באודות</h2>
+                        <h2 style={{ fontFamily: "Comic Sans MS" }}>אם כן, אז <a href="./" style={{ color: 'black' }}> התחבר</a> לאתר והזן את הקוד שקיבלת ב-פלאפון שלך לאחר ביצוע עסקת תשלום מוצלחת</h2>
                     </>
                 }
             </DivTitles>
@@ -65,7 +65,7 @@ const BuyPremiumUser = (props) => {
             <DirectDiv style={{ direction: props.english ? 'ltr' : 'rtl' }}>
                 <DirectInput placeholder={props.english ? "PIN code" : "קוד גישה"}onChange={e => setPinCode(e.target.value)}></DirectInput>
                 <br />
-                <DirectButton onClick={() => handlePinCode(pinCode, props.setPremium)}>{props.english ? 'Submit' : "שלח"}</DirectButton>
+                <DirectButton onClick={() => handlePinCode(pinCode, props.setPremium, props.english)}>{props.english ? 'Submit' : "שלח"}</DirectButton>
             </DirectDiv>
             <br /><br />
             <br /><br />
