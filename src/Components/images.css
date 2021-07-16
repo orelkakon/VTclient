@@ -1,22 +1,24 @@
 .img{
-    display: flex; 
-    height: 60vh;
-    width: 60vw;
-    padding-bottom: 10px;
+    height: 70vh;
+    width: 85vw;
     margin: auto;
 }
 @media all and (min-width: 1024px)
-{
+{   
+    .img{
+        height: 60vh;
+        width: 60vw;
+    }
     .img:hover{
+        margin: auto;
         zoom: 150% 
     }      
 }
 
 
 .imgComment{
-    height: auto;
-    max-width:90%;
-    max-height:90%;
+    width:70%;
+    height:70%;
     margin: auto;
 }
 

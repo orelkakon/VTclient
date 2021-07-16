@@ -116,10 +116,10 @@ const getAdminPosts = async (english) => {
 }
 
 const PremiumPage = (props) => {
-    const [premium, setPremium] = useState(document.cookie.includes("yesPremium"));
+    const [premium, setPremium] = useState(sessionStorage.getItem('session') ? sessionStorage.getItem('session').includes("yesPremium") : false);
     const [data, setData] = useState([])
-    const admin = document.cookie.includes("orelkakon")
-    const user = document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(','));
+    const admin = sessionStorage.getItem('session') ? sessionStorage.getItem('session').includes("orelkakon") : false
+    const user = sessionStorage.getItem('session') ? sessionStorage.getItem('session').substring(sessionStorage.getItem('session').indexOf(' ') + 1, sessionStorage.getItem('session').indexOf(',')) : false;
     useEffect(() => {
         admin ? getAdminPosts(props.english).then(result => result && setData(result.reverse())) :
             getMyPosts(user, props.english).then(result => result && setData(result.reverse()))
@@ -131,9 +131,9 @@ const PremiumPage = (props) => {
             {
                 (premium || admin) ?
                     <>
-                        <h1 style={{ textAlign: 'center' }}>{admin ? (props.english ? 'Direct Questions for '+ user:  user + " שאלות אישיות עבור ") : (props.english ? 'Direct Questions Of ' + user : user + " שאלות אישיות") }</h1>
+                        <h1 style={{ textAlign: 'center' }}>{admin ? (props.english ? 'Direct Questions for '+ user:  user + " שאלות אישיות") : (props.english ? 'Direct Questions Of ' + user : user + " שאלות אישיות") }</h1>
                         <br />
-                        <AddPost english={props.english} message={props.english ? "Send" : "שלח"} h1={props.english ? "Ask Direct Question" : "שאל שאלה אישית"} addDPost={addNewPost} kind='direct' />
+                        <AddPost english={props.english} message={props.english ? "Publish" : "פרסם"} h1={props.english ? "Ask Direct Question" : "שאל שאלה אישית"} addDPost={addNewPost} kind='direct' />
                         <br />
                         {
                             data && data.map(post => {

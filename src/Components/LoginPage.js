@@ -39,12 +39,12 @@ const handleLogin = async(username, password, setLogged, english) => {
         const isLoggedIn = response[0];
         const isPremiumIn = response[1];
         if (isLoggedIn.data && isPremiumIn.data !== "") {
-            document.cookie = `username: ${username}, premium: yesPremium;`
+            sessionStorage.setItem('session', `username: ${username}, premium: yesPremium;`)
             notify(english ? 'successful Login' : 'התחברות מוצלחת')
             setLogged(true)
         }
         else if (isLoggedIn.data) {
-            document.cookie = `username: ${username},`
+            sessionStorage.setItem('session', `username: ${username},`)
             notify(english ? 'successful Login' : 'התחברות מוצלחת')
             setLogged(true)
         }
@@ -56,7 +56,8 @@ const handleLogin = async(username, password, setLogged, english) => {
 
 const handleLogout = async (username, setLogged, english) => {
     notify(english ? `Bye Bye ${username}` : `${username} ביי ביי`)
-    document.cookie = `username: ${username}; expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
+    sessionStorage.removeItem('session')
+    
     setLogged(false)
 }
 
@@ -69,7 +70,7 @@ const LoginPage = (props) => {
             {
                 props.logged ?
                     <LogoutForm>
-                        <LogoutButton onClick={() => handleLogout(document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(',')), props.setLogged, props.english)}>{props.english ? 'Logout': 'התנתק'}</LogoutButton>
+                        <LogoutButton onClick={() => handleLogout(sessionStorage.getItem('session').substring(sessionStorage.getItem('session').indexOf(' ') + 1, sessionStorage.getItem('session').indexOf(',')), props.setLogged, props.english)}>{props.english ? 'Logout': 'התנתק'}</LogoutButton>
                     </LogoutForm>
                     :
                     <LoginForm direction={props.english ? 'ltr': 'rtl'}>

@@ -16,7 +16,12 @@ const AddPost = (props) => {
                 setFile(reader.result)
             }
         }
-        reader.readAsDataURL(e.target.files[0])
+        try {
+            reader.readAsDataURL(e.target.files[0])
+        } catch (err) {
+            alert(err)
+            window.location.reload()
+        }
     };
 
     const resetFields = () => {
@@ -42,8 +47,8 @@ const AddPost = (props) => {
             <label id="upfile" className='uploadButton' style={file ? { backgroundColor: "green" } : { backgroundColor: "transparent" }}><img src={icon} alt="GitHub" style={{ width: "30px", height: "30px" }} />
                 <input onChange={imageHandler} accept="image/*" type="file" style={{ display: 'none' }} /> </label>
             <ButtonAddPost onClick={() => props.kind === 'blog' ?
-                props.addpost(document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(',')), title.replaceAll("'", ""), description.replaceAll("'", ""), file, resetFields, props.english) :
-                props.addDPost(document.cookie.substring(document.cookie.indexOf(' ') + 1, document.cookie.indexOf(',')), title.replaceAll("'", ""), description.replaceAll("'", ""), file, resetFields, props.english)
+                props.addpost(sessionStorage.getItem('session').substring(sessionStorage.getItem('session').indexOf(' ') + 1, sessionStorage.getItem('session').indexOf(',')), title.replaceAll("'", ""), description.replaceAll("'", ""), file, resetFields, props.english) :
+                props.addDPost(sessionStorage.getItem('session').substring(sessionStorage.getItem('session').indexOf(' ') + 1, sessionStorage.getItem('session').indexOf(',')), title.replaceAll("'", ""), description.replaceAll("'", ""), file, resetFields, props.english)
             }>{props.message}</ButtonAddPost>
         </AddPostDiv>
     )

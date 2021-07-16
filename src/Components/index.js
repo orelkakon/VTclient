@@ -278,7 +278,7 @@ export const InputAddComment = styled.textarea`
     padding: 0px 5px 0px 5px;
     resize: none;
     ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-        color: gray;
+        color: black;
         padding: 0px 5px 0px 5px;
         font-family: Comic Sans MS;
     };
@@ -402,10 +402,14 @@ export const AddPostTitle = styled.input`
     font-family: Comic Sans MS;
     text-align: start;
     unicode-bidi: plaintext;
+    ::placeholder {
+        color: black;
+        opacity: 1; /* Firefox */
+    };   
 `;
 
 export const AddPostDesc = styled.textarea`
-text-align: start;
+    text-align: start;
     unicode-bidi: plaintext;
     background-color: #b3b3ff;
     border-radius: 15px 15px 15px 15px;
@@ -415,7 +419,10 @@ text-align: start;
     width: 90%;
     height: 40vh;
     font-family: Comic Sans MS;
-
+    ::placeholder {
+        color: black;
+        opacity: 1; /* Firefox */
+    };   
 `;
 
 export const ButtonAddPostFile = styled.button`
@@ -440,7 +447,7 @@ export const ButtonAddPostFile = styled.button`
 
 export const ButtonAddPost = styled.button`
     position: relative;
-    width: 80px;
+    width: 100px;
     height: 36px;
     border-radius: 18px;
     background-color: #b3b3ff;

@@ -15,10 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const properties = {
   position: "bottom-right",
   autoClose: 2500,
-  hideProgressBar: false,
   closeOnClick: true,
-  pauseOnHover: true,
-  draggable: true,
   progress: undefined
 }
 
@@ -27,8 +24,9 @@ export const notify = async (msg) => {
 }
 
 const LandPage = () => {
-  const [english, setEnglish] = useState(true)
-  const [logged, setLogged] = useState(document.cookie.includes('username'))
+  sessionStorage.setItem('language','english')
+  const [english, setEnglish] = useState(sessionStorage.getItem('language') ? sessionStorage.getItem('language').includes('english') : false)
+  const [logged, setLogged] = useState(sessionStorage.getItem('session'))
   return (
     <div className="landpage">
       <ToastContainer />

@@ -14,7 +14,7 @@ const deleteComment = async (commentid, kind, setData, data, english) => {
         }
     })
     await notify(english ? `successful delete comment`: "התגובה נמחקה בהצלחה")
-    setData(data)
+    data && setData(data)
 }
 
 const Comment = (props) => {
@@ -29,7 +29,7 @@ const Comment = (props) => {
                 props.comment.files && props.comment.files[0] !== "null" && (<img src={props.comment.files} alt="not found 2" id="imgComment" className="img" />)
             }
             {
-                (document.cookie.includes(` ${props.comment.name},`) || document.cookie.includes(` orelkakon,`)) && <DeleteComment english={props.english} deleteComment={deleteComment} commentid={props.comment.commentid} kind={props.kind} setData={props.setData} data={props.data}/>
+                (sessionStorage.getItem('session').includes(` ${props.comment.name},`) || sessionStorage.getItem('session').includes(` orelkakon,`)) && <DeleteComment english={props.english} deleteComment={deleteComment} commentid={props.comment.commentid} kind={props.kind} setData={props.setData} data={props.data}/>
             }
         </CommentBorder>
     )

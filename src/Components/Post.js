@@ -16,7 +16,7 @@ const deletePost = async (postid, kind, setData, data, english) => {
         }
     })
     await notify(english ? `successful delete post`: "הפוסט נמחק בהצלחה")
-    setData(data)
+    data && setData(data)
 }
 
 
@@ -40,12 +40,12 @@ const Post = (props) => {
                         return (<Comment english={props.english} comment={comment} kind={props.kind} setData={props.setData} data={props.data}/>)
                     })
                 }
-                <AddComment props={props.english} addComment={props.addDComment} addAcomment={props.addComment} postid={props.postid} kind={props.kind}>
+                <AddComment english={props.english} addComment={props.addDComment} addAcomment={props.addComment} postid={props.postid} kind={props.kind}>
                 </AddComment>
 
             </CommentsArea>
             {
-                (document.cookie.includes(` ${props.name},`) || document.cookie.includes(` orelkakon,`)) && <DeletePost english={props.english} delete={deletePost} postid={props.postid} kind={props.kind} setData={props.setData} data={props.data}/>
+                (sessionStorage.getItem('session').includes(` ${props.name},`) || sessionStorage.getItem('session').includes(` orelkakon,`)) && <DeletePost english={props.english} delete={deletePost} postid={props.postid} kind={props.kind} setData={props.setData} data={props.data}/>
             }
 
         </PostDiv>

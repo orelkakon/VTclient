@@ -113,7 +113,7 @@ const Links = (props) => {
                                 <img src={file} alt="3 units" style={{ width: "80px", height: "80px" }} />
                                 <br />
 
-                                {props.english ? 'Psychometric exams' : 'מבחני םסיכומטרי'}
+                                {props.english ? 'Psychometric exams' : 'מבחני פסיכומטרי'}
                             </a>
                             <br /><br />
                             <a href="https://mathstar.co.il/%D7%97%D7%95%D7%9E%D7%A8%D7%99-%D7%A2%D7%96%D7%A8-%D7%91%D7%9E%D7%AA%D7%9E%D7%98%D7%99%D7%A7%D7%94/" target="_blank" rel="noreferrer" style={{ textDecoration: 'none', color: 'black', fontSize: '30px' }}>
