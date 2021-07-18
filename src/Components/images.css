@@ -16,15 +16,21 @@
 }
 
 
-.imgComment{
-    width:70%;
-    height:70%;
+.imgcomment{
+    height: 70vh;
+    width: 70vw;
     margin: auto;
 }
-
-.imgComment:hover
-{
-    zoom: 170%
+@media all and (min-width: 1024px)
+{   
+    .imgcomment{
+        height: 60vh;
+        width: 56vw;
+    }
+    .imgcomment:hover{
+        margin: auto;
+        zoom: 150% 
+    }      
 }
 
 .uploadButton{

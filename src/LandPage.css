@@ -15,7 +15,6 @@
 }
 
 
-
 .language {
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
@@ -30,13 +29,9 @@
   opacity: 0;
 }
 
-/**
- * 1. Adjust this to size
- */
-
 .switch {
   display: inline-block;
-  font-size: 20px; /* 1 */
+  font-size: 20px;
   height: 2em;
   width: 4em;
   background: #69a081;

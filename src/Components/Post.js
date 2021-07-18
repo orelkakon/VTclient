@@ -15,8 +15,7 @@ const deletePost = async (postid, kind, setData, data, english) => {
             postid: postid,
         }
     })
-    await notify(english ? `successful delete post`: "הפוסט נמחק בהצלחה")
-    data && setData(data)
+    notify(english ? `successful delete post`: "הפוסט נמחק בהצלחה")
 }
 
 

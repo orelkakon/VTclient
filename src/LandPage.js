@@ -14,8 +14,11 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const properties = {
   position: "bottom-right",
-  autoClose: 2500,
-  closeOnClick: true,
+  autoClose: 2000,
+  hideProgressBar: false,
+  closeOnClick: false,
+  pauseOnHover: false,
+  draggable: false,
   progress: undefined
 }
 
