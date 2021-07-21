@@ -6,7 +6,7 @@ import NeedRegisterUser from './NeedRegisterUser'
 import { useState, useEffect } from 'react'
 import { notify } from './../LandPage';
 
-const addNewPost = async (username, title, description, files, resetFields, english) => {
+const addNewPost = async (username, title, description, files, resetFields, english, setFile) => {
     if (title === "" || description === "") {
         notify(english ? 'Empty title or description': "ישנו שדה ריק")
         return
@@ -29,7 +29,9 @@ const addNewPost = async (username, title, description, files, resetFields, engl
         else {
             notify(english ? 'Failed to add a new post' : "העלאת פוסט חדש נכשלה")
         }
+        setFile(null)
     }).catch(err => {
+        setFile(null)
         notify(err)
     });
 }
@@ -50,7 +52,7 @@ const getPosts = async (english) => {
     });
 }
 
-const addNewComment = async (username, description, postid, files, resetFields, english) => {
+const addNewComment = async (username, description, postid, files, resetFields, english, setFile) => {
     if (description === "") {
         await notify(english ? 'Empty description': "שדה תוכן ריק")
         return
@@ -73,7 +75,9 @@ const addNewComment = async (username, description, postid, files, resetFields, 
         else {
             notify(english ? 'Failed to add a new comment': "הוספת תגובה חדשה נכשלה")
         }
+        setFile(null)
     }).catch(err => {
+        setFile(null)
         notify(err)
     });
 }
@@ -89,7 +93,7 @@ const Blog = (props) => {
             {
                 (sessionStorage.getItem('session') ? sessionStorage.getItem('session').includes('username') : false) ?
                     <>
-                        <h1 style={{ textAlign: 'center' }}>{props.english ? 'Global Questions' : 'בלוג השאלות החופשי'}</h1>
+                        <h1 style={{ textAlign: 'center', fontFamily:"Aharoni", fontSize: "50px" }}>{props.english ? 'Global Questions' : 'בלוג השאלות החופשי'}</h1>
                         <br />
                         <AddPost english={props.english} message={props.english ? "Publish" : "פרסם"} h1={props.english ? "Ask Global Question" : "שאל שאלה חדשה"} addpost={addNewPost} kind='blog' />
                         <br />

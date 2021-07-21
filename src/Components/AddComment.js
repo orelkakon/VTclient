@@ -36,8 +36,8 @@ const AddComment = (props) => {
             <input onChange={imageHandler} accept="image/*" type="file" style={{display:'none'}}/> </label>
             <br/>
             <ButtonAddComment onClick={() => props.kind === 'blog' ? 
-                props.addAcomment(sessionStorage.getItem('session').substring(sessionStorage.getItem('session').indexOf(' ') + 1, sessionStorage.getItem('session').indexOf(',')), comment.replaceAll("'",""), props.postid, file, resetFields, props.english):
-                props.addComment(sessionStorage.getItem('session').substring(sessionStorage.getItem('session').indexOf(' ') + 1, sessionStorage.getItem('session').indexOf(',')), comment.replaceAll("'",""), props.postid, file, resetFields, props.english)
+                props.addAcomment(sessionStorage.getItem('session').substring(sessionStorage.getItem('session').indexOf(' ') + 1, sessionStorage.getItem('session').indexOf(',')), comment.replaceAll("'",""), props.postid, file, resetFields, props.english, setFile):
+                props.addComment(sessionStorage.getItem('session').substring(sessionStorage.getItem('session').indexOf(' ') + 1, sessionStorage.getItem('session').indexOf(',')), comment.replaceAll("'",""), props.postid, file, resetFields, props.english, setFile)
             }>{props.english ? "Send" : "שלח"}</ButtonAddComment>
             
         </AddCommentt>

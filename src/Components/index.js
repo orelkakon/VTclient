@@ -314,10 +314,14 @@ export const ImageComment = styled.img`
     max-width:90%;
     max-height:90%;
     margin: auto;
-    &:hover
+    @media all and (min-width: 1024px)
     {
-        zoom: 170%
+        &:hover
+        {
+            zoom: 170%
+        }
     }
+    
 `;
 
 export const ButtonAddFile = styled.button`

@@ -12,12 +12,12 @@ const sendEmail = (msg) => {
         .then((result) => {
             
         }, (error) => {
-            alert(error)
+            alert("No Internet Connection: " + error)
         });
 }
 
 
-const addNewPost = async (username, title, description, files, resetFields, english) => {
+const addNewPost = async (username, title, description, files, resetFields, english, setFile) => {
     if (title === "" || description === "") {
         notify(english ? 'Empty title or description' : "ישנו שדה ריק")
         return
@@ -47,12 +47,14 @@ const addNewPost = async (username, title, description, files, resetFields, engl
         else {
             notify(english ? 'Failed to add a new direct post': "העלאת פוסט אישי נכשלה")
         }
+        setFile(null)
     }).catch(err => {
+        setFile(null)
         notify(err)
     });
 }
 
-const addNewComment = async (username, description, postid, files, resetFields, english) => {
+const addNewComment = async (username, description, postid, files, resetFields, english, setFile) => {
     if (description === "") {
         notify(english ? 'Empty description': "שדה תוכן ריק")
         return
@@ -75,7 +77,9 @@ const addNewComment = async (username, description, postid, files, resetFields, 
         else {
             notify(english ? 'Failed to add a new direct comment': "הוספת תגובה נכשלה")
         }
+        setFile(null)
     }).catch(err => {
+        setFile(null)
         notify(err)
     });
 }
@@ -131,7 +135,7 @@ const PremiumPage = (props) => {
             {
                 (premium || admin) ?
                     <>
-                        <h1 style={{ textAlign: 'center' }}>{admin ? (props.english ? 'Direct Questions for '+ user:  user + " שאלות אישיות") : (props.english ? 'Direct Questions Of ' + user : user + " שאלות אישיות") }</h1>
+                        <h1 style={{ textAlign: 'center', fontFamily:"Aharoni", fontSize: "50px" }}>{admin ? (props.english ? 'Direct Questions for '+ user:  user + " שאלות אישיות") : (props.english ? 'Direct Questions Of ' + user : user + " שאלות אישיות") }</h1>
                         <br />
                         <AddPost english={props.english} message={props.english ? "Publish" : "פרסם"} h1={props.english ? "Ask Direct Question" : "שאל שאלה אישית"} addDPost={addNewPost} kind='direct' />
                         <br />

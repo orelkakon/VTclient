@@ -47,8 +47,8 @@ const AddPost = (props) => {
             <label id="upfile" className='uploadButton' style={file ? { backgroundColor: "green" } : { backgroundColor: "transparent" }}><img src={icon} alt="GitHub" style={{ width: "30px", height: "30px" }} />
                 <input onChange={imageHandler} accept="image/*" type="file" style={{ display: 'none' }} /> </label>
             <ButtonAddPost onClick={() => props.kind === 'blog' ?
-                props.addpost(sessionStorage.getItem('session').substring(sessionStorage.getItem('session').indexOf(' ') + 1, sessionStorage.getItem('session').indexOf(',')), title.replaceAll("'", ""), description.replaceAll("'", ""), file, resetFields, props.english) :
-                props.addDPost(sessionStorage.getItem('session').substring(sessionStorage.getItem('session').indexOf(' ') + 1, sessionStorage.getItem('session').indexOf(',')), title.replaceAll("'", ""), description.replaceAll("'", ""), file, resetFields, props.english)
+                props.addpost(sessionStorage.getItem('session').substring(sessionStorage.getItem('session').indexOf(' ') + 1, sessionStorage.getItem('session').indexOf(',')), title.replaceAll("'", ""), description.replaceAll("'", ""), file, resetFields, props.english, setFile) :
+                props.addDPost(sessionStorage.getItem('session').substring(sessionStorage.getItem('session').indexOf(' ') + 1, sessionStorage.getItem('session').indexOf(',')), title.replaceAll("'", ""), description.replaceAll("'", ""), file, resetFields, props.english, setFile)
             }>{props.message}</ButtonAddPost>
         </AddPostDiv>
     )

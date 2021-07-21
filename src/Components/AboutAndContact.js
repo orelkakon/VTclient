@@ -2,7 +2,7 @@ import { About, AboutContact } from './index'
 import profile from './../Assets/profile.jpg'
 import phoneLogo from './../Assets/phone_logo.png'
 import mailLogo from './../Assets/mail_logo.png'
-
+import instaLogo from './../Assets/insta.png'
 
 function AboutAndContact(props) {
     return (
@@ -37,9 +37,11 @@ function AboutAndContact(props) {
                 <br /><br />
             </About>
             <u><h1>{props.english ? 'Contact Me' : 'פרטי התקשרות'}</h1></u>
-            <img src={mailLogo} alt="phoneLogo" height="27px" /><a href="mailto:orelkak@post.bgu.ac.il" style={{ textDecoration: "none", fontSize: "30px", color: "#000" }}> Orelkak@post.bgu.ac.il</a>
+            <img src={instaLogo} alt="instaLogo" height="27px" /><a href="https://www.instagram.com/orelkakon/" style={{ textDecoration: "none", fontSize: "32px", color: "#000" }}> My Instagram</a>
             <br />
-            <img src={phoneLogo} alt="phoneLogo" height="30px" /><a href="tel:+97254-4650-494" style={{ textDecoration: "none", fontSize: "34px", color: "#000" }}> 054-4650494</a>
+            <img src={mailLogo} alt="phoneLogo" height="27px" /><a href="mailto:orelkak@post.bgu.ac.il" style={{ textDecoration: "none", fontSize: "33px", color: "#000" }}> Orelkak@post.bgu.ac.il</a>
+            <br />
+            <img src={phoneLogo} alt="phoneLogo" height="30px" /><a href="tel:+97254-4650-494" style={{ textDecoration: "none", fontSize: "37px", color: "#000" }}> 054-4650494</a>
             <br /><br /><br /><br /><br />
         </AboutContact>
     )
