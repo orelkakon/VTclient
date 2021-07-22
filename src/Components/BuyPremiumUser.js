@@ -27,12 +27,12 @@ const handlePinCode = async (pincode, setPremium, english) => {
     if (validatePINcode(pincode)) {
         const username = sessionStorage.getItem('session').substring(sessionStorage.getItem('session').indexOf(' ') + 1, sessionStorage.getItem('session').indexOf(','))
         if (await checkMyPincode(pincode, username)) {
-            sessionStorage.setItem('session',`username: ${username}, premium: yesPremium;`)
-            notify(english ? 'Successful PIN code': "קוד גישה תקין")
+            sessionStorage.setItem('session', `username: ${username}, premium: yesPremium;`)
+            notify(english ? 'Successful PIN code' : "קוד גישה תקין")
             setPremium(true);
         }
         else {
-            notify(english ? 'Wrong PIN code': "קוד גישה שגוי")
+            notify(english ? 'Wrong PIN code' : "קוד גישה שגוי")
         }
     }
     else {
@@ -44,20 +44,30 @@ const BuyPremiumUser = (props) => {
     const [pinCode, setPinCode] = useState("")
 
     return (
-        <div style={{ textAlign: "center"}}>
+        <div style={{ textAlign: "center" }}>
 
             <DivTitles style={{ direction: props.english ? 'ltr' : 'rtl' }}>
                 {props.english ?
                     <>
                         <h1>ARE YOU PREMIUM USER ??</h1>
-                        <h2 style={{ fontFamily: "Comic Sans MS" }}>If not so this service costs 100₪ (NIS) per month, can be paid (bit, pay, paybox) through the site owner (details in About)</h2>
-                        <h2 style={{ fontFamily: "Comic Sans MS" }}>If yes <a href="./" style={{ color: 'black' }}>login</a> to website and enter the code you received on your cellphone after making a successful payment</h2>
+                        <h2 style={{ fontFamily: "Comic Sans MS" }}>If not so this service costs 150₪ (NIS) per month, can be paid (bit, pay, paybox) through the site owner (details in About)</h2>
+                        {
+                            sessionStorage.getItem('session') ?
+                                <h2 style={{ fontFamily: "Comic Sans MS" }}>If yes enter the code you received on your cellphone after making a successful payment</h2>
+                                :
+                                <h2 style={{ fontFamily: "Comic Sans MS" }}>If yes <a href="./" style={{ color: 'black' }}>login</a> to website and enter the code you received on your cellphone after making a successful payment</h2>
+                        }
                     </>
                     :
                     <>
                         <h1>האם אתה משתמש מנוי ??</h1>
-                        <h2 style={{ fontFamily: "Comic Sans MS" }}>אם לא, אז ניתן לקנות את השירות ב-100 ש"ח לחודש, ניתן לשלם (ביט, פאי, פאיבוקס, העברה בנקאית) דרך הפרטים ליצירת קשר שנמצאים באודות</h2>
-                        <h2 style={{ fontFamily: "Comic Sans MS" }}>אם כן, אז <a href="./"  style={{ color: 'black' }}> התחבר</a> לאתר והזן את הקוד שקיבלת ב-פלאפון שלך לאחר ביצוע עסקת תשלום מוצלחת</h2>
+                        <h2 style={{ fontFamily: "Comic Sans MS" }}>אם לא, ניתן לקנות את השירות ב-150 ש"ח לחודש, ניתן לשלם (ביט, פאי, פאיבוקס, העברה בנקאית) דרך הפרטים ליצירת קשר שנמצאים באודות</h2>
+                        {
+                            sessionStorage.getItem('session') ?
+                                <h2 style={{ fontFamily: "Comic Sans MS" }}>אם כן, הזן את הקוד שקיבלת ב-פלאפון שלך לאחר ביצוע עסקת תשלום מוצלחת</h2>
+                                :
+                                <h2 style={{ fontFamily: "Comic Sans MS" }}>אם כן, <a href="./" style={{ color: 'black' }}> התחבר</a> לאתר והזן את הקוד שקיבלת ב-פלאפון שלך לאחר ביצוע עסקת תשלום מוצלחת</h2>
+                        }
                     </>
                 }
             </DivTitles>
