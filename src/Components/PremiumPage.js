@@ -24,7 +24,7 @@ const addNewPost = async (username, title, description, files, resetFields, engl
     }
     await axios({
         method: 'post',
-        url: `${config.protocol}://${config.host}:${config.port}${config.urls.addDirectPost}`,
+        url: `${config.protocol}://${config.host}${config.urls.addDirectPost}`,
         data: {
             username: username,
             title: title,
@@ -61,7 +61,7 @@ const addNewComment = async (username, description, postid, files, resetFields, 
     }
     await axios({
         method: 'post',
-        url: `${config.protocol}://${config.host}:${config.port}${config.urls.addDirectComment}`,
+        url: `${config.protocol}://${config.host}${config.urls.addDirectComment}`,
         data: {
             username: username,
             description: description,
@@ -87,7 +87,7 @@ const addNewComment = async (username, description, postid, files, resetFields, 
 const getMyPosts = async (user, english) => {
     return await axios({
         method: 'post',
-        url: `${config.protocol}://${config.host}:${config.port}${config.urls.getMyPosts}`,
+        url: `${config.protocol}://${config.host}${config.urls.getMyPosts}`,
         data: {
             username: user
         }
@@ -106,7 +106,7 @@ const getMyPosts = async (user, english) => {
 const getAdminPosts = async (english) => {
     return await axios({
         method: 'get',
-        url: `${config.protocol}://${config.host}:${config.port}${config.urls.getAdminPosts}`
+        url: `${config.protocol}://${config.host}${config.urls.getAdminPosts}`
     }).then(result => {
         if (result.data) {
             return result.data

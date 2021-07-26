@@ -1,7 +1,7 @@
 {
-    "host":"virtualorelserver.online",
-    "port":"3001",
-    "protocol":"http",
+    "host":"virtual-teacher-server.herokuapp.com",
+    "port":"8080",
+    "protocol":"https",
     "urls":{
         "login":"/login",
         "register":"/register",

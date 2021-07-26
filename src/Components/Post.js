@@ -10,7 +10,7 @@ import { notify } from './../LandPage';
 const deletePost = async (postid, kind, setData, data, english) => {
     await axios({
         method: 'post',
-        url: `${config.protocol}://${config.host}:${config.port}${kind === 'blog' ? config.urls.deletePost : config.urls.deletePostD}`,
+        url: `${config.protocol}://${config.host}${kind === 'blog' ? config.urls.deletePost : config.urls.deletePostD}`,
         data: {
             postid: postid,
         }

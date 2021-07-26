@@ -35,7 +35,7 @@ const handleRegister = async (username, password, confirmPassword, email, phone,
     }
     await axios({
         method: 'post',
-        url: `${config.protocol}://${config.host}:${config.port}${config.urls.register}`,
+        url: `${config.protocol}://${config.host}${config.urls.register}`,
         data: {
             username: username,
             password: password,

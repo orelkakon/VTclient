@@ -9,7 +9,7 @@ import { notify } from './../LandPage';
 const checkMyPincode = async (pin, user) => {
     return await axios({
         method: 'post',
-        url: `${config.protocol}://${config.host}:${config.port}${config.urls.checkPinCode}`,
+        url: `${config.protocol}://${config.host}${config.urls.checkPinCode}`,
         data: {
             pincode: pin,
             username: user

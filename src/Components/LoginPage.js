@@ -10,7 +10,7 @@ import { notify } from './../LandPage';
 const isLogin = (username, password) => {
     return axios({
         method: 'post',
-        url: `${config.protocol}://${config.host}:${config.port}${config.urls.login}`,
+        url: `${config.protocol}://${config.host}${config.urls.login}`,
         data: {
             username: username,
             password: password
@@ -21,7 +21,7 @@ const isLogin = (username, password) => {
 const getMyPincode = (user) => {
     return axios({
         method: 'post',
-        url: `${config.protocol}://${config.host}:${config.port}${config.urls.getMyPinCode}`,
+        url: `${config.protocol}://${config.host}${config.urls.getMyPinCode}`,
         data: {
             username: user
         }

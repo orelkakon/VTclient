@@ -8,7 +8,7 @@ import { notify } from './../LandPage';
 const deleteComment = async (commentid, kind, setData, data, english) => {
     await axios({
         method: 'post',
-        url: `${config.protocol}://${config.host}:${config.port}${kind === 'blog' ? config.urls.deleteComment : config.urls.deleteCommentD}`,
+        url: `${config.protocol}://${config.host}${kind === 'blog' ? config.urls.deleteComment : config.urls.deleteCommentD}`,
         data: {
             commentid: commentid,
         }

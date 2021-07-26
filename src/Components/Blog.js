@@ -11,9 +11,9 @@ const addNewPost = async (username, title, description, files, resetFields, engl
         notify(english ? 'Empty title or description': "ישנו שדה ריק")
         return
     }
-    await axios({
+    await axios({   
         method: 'post',
-        url: `${config.protocol}://${config.host}:${config.port}${config.urls.addPost}`,
+        url: `${config.protocol}://${config.host}${config.urls.addPost}`,
         data: {
             username: username,
             title: title,
@@ -39,7 +39,7 @@ const addNewPost = async (username, title, description, files, resetFields, engl
 const getPosts = async (english) => {
     return await axios({
         method: 'get',
-        url: `${config.protocol}://${config.host}:${config.port}${config.urls.getPosts}`
+        url: `${config.protocol}://${config.host}${config.urls.getPosts}`
     }).then(result => {
         if (result.data) {
             return result.data
@@ -59,7 +59,7 @@ const addNewComment = async (username, description, postid, files, resetFields, 
     }
     await axios({
         method: 'post',
-        url: `${config.protocol}://${config.host}:${config.port}${config.urls.addNewComment}`,
+        url: `${config.protocol}://${config.host}${config.urls.addNewComment}`,
         data: {
             username: username,
             description: description,
